@@ -500,10 +500,7 @@ html {
 }
 
 .grafico-3d-page {
-  background:
-    radial-gradient(circle at 50% 48%, rgba(24, 191, 98, 0.1), transparent 34%),
-    radial-gradient(circle at 30% 72%, rgba(139, 92, 246, 0.06), transparent 28%),
-    #ececec;
+  background: #ececec;
 }
 
 .radar-3d-wrap {

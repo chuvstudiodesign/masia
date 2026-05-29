@@ -1,0 +1,7 @@
+interface:
+  display_name: "MASI LP Orchestrator"
+  short_description: "Orquestra LPs MASI com agentes."
+  default_prompt: "Use $masi-lp-orchestrator para criar ou revisar a LP da MASI IA com agentes especializados e quality gates."
+
+policy:
+  allow_implicit_invocation: true

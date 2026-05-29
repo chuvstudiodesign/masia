@@ -645,7 +645,7 @@ html {
   inset: 0;
   pointer-events: none;
   position: absolute;
-  transform: translate3d(var(--label-x), var(--label-y), 118px);
+  transform: translate3d(var(--label-x), calc(var(--label-y) + 5%), 118px);
   transform-style: preserve-3d;
 }
 

@@ -536,7 +536,7 @@ html {
   position: relative;
   transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) translate3d(0, 0, 0) translateY(0) scale(1);
   transform-style: preserve-3d;
-  width: min(62vw, 520px);
+  width: min(56vw, 468px);
   will-change: transform;
 }
 
@@ -789,7 +789,7 @@ html {
 
 @media (max-width: 720px) {
   .radar-3d-wrap {
-    width: min(82vw, 420px);
+    width: min(74vw, 378px);
   }
 
   .radar-3d-wrap {

@@ -221,9 +221,10 @@ function AgentesNetwork3D(_, ref) {
             <circle
               cx={CX} cy={CY} r={RING}
               fill="none"
-              stroke="rgba(236,72,153,0.18)"
-              strokeWidth="0.4"
-              strokeDasharray="1.4 1.4"
+              stroke={hovered === "maestro" ? "#18bf6255" : "rgba(236,72,153,0.18)"}
+              strokeWidth={hovered === "maestro" ? "0.55" : "0.4"}
+              strokeDasharray={hovered === "maestro" ? "none" : "1.4 1.4"}
+              style={{ transition: "stroke 0.3s ease, stroke-width 0.3s ease" }}
             />
             {agents.map((agent) => {
               const { x, y } = agentPos(agent.angle);

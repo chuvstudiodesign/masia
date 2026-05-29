@@ -32,7 +32,7 @@ const axes = [
 
 const rings = [70, 115, 160, 205];
 const dataShape = dataPoints.map(([x, y]) => `${x},${y}`).join(" ");
-const centerState = { glowX: 50, glowY: 50, x: 0, y: 0 };
+const centerState = { glowOpacity: 1, glowX: 50, glowY: 50, x: 0, y: 0 };
 
 function polygonPoints(radius: number) {
   const cx = 260;
@@ -56,7 +56,7 @@ export function Radar3D() {
   const targetRef = useRef({ ...centerState });
   const wrapRef = useRef<HTMLDivElement>(null);
 
-  function applyMotion(x: number, y: number, glowX: number, glowY: number) {
+  function applyMotion(x: number, y: number, glowX: number, glowY: number, glowOpacity: number) {
     const element = wrapRef.current;
     if (!element) return;
 
@@ -84,6 +84,7 @@ export function Radar3D() {
     element.style.setProperty("--label-y", `${y * 6}px`);
     element.style.setProperty("--glow-x", `${glowX}%`);
     element.style.setProperty("--glow-y", `${glowY}%`);
+    element.style.setProperty("--glow-opacity", `${glowOpacity}`);
   }
 
   function tick() {
@@ -95,18 +96,20 @@ export function Radar3D() {
     current.y += (target.y - current.y) * speed;
     current.glowX += (target.glowX - current.glowX) * speed;
     current.glowY += (target.glowY - current.glowY) * speed;
+    current.glowOpacity += (target.glowOpacity - current.glowOpacity) * speed;
 
-    applyMotion(current.x, current.y, current.glowX, current.glowY);
+    applyMotion(current.x, current.y, current.glowX, current.glowY, current.glowOpacity);
 
     const done =
       Math.abs(target.x - current.x) < 0.0008 &&
       Math.abs(target.y - current.y) < 0.0008 &&
       Math.abs(target.glowX - current.glowX) < 0.08 &&
-      Math.abs(target.glowY - current.glowY) < 0.08;
+      Math.abs(target.glowY - current.glowY) < 0.08 &&
+      Math.abs(target.glowOpacity - current.glowOpacity) < 0.004;
 
     if (done) {
       currentRef.current = { ...target };
-      applyMotion(target.x, target.y, target.glowX, target.glowY);
+      applyMotion(target.x, target.y, target.glowX, target.glowY, target.glowOpacity);
       animationRef.current = null;
       return;
     }
@@ -126,10 +129,15 @@ export function Radar3D() {
     const rect = event.currentTarget.getBoundingClientRect();
     const x = (event.clientX - rect.left) / rect.width - 0.5;
     const y = (event.clientY - rect.top) / rect.height - 0.5;
+    const distance = Math.hypot(x, y);
+    const fadeStart = 0.16;
+    const fadeEnd = 0.38;
+    const glowOpacity = Math.max(0, Math.min(1, 1 - (distance - fadeStart) / (fadeEnd - fadeStart)));
 
     element.classList.add("is-interacting");
     isReturningRef.current = false;
     targetRef.current = {
+      glowOpacity,
       glowX: (x + 0.5) * 100,
       glowY: (y + 0.5) * 100,
       x,

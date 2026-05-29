@@ -32,7 +32,7 @@ const axes = [
 
 const rings = [70, 115, 160, 205];
 const dataShape = dataPoints.map(([x, y]) => `${x},${y}`).join(" ");
-const centerState = { glowOpacity: 1, glowX: 50, glowY: 50, x: 0, y: 0 };
+const centerState = { glowOpacity: 0, glowX: 50, glowY: 50, x: 0, y: 0 };
 
 function polygonPoints(radius: number) {
   const cx = 260;

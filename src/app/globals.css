@@ -541,9 +541,7 @@ html {
 }
 
 .radar-3d-glow {
-  background:
-    radial-gradient(circle at var(--glow-x) var(--glow-y), rgba(24, 191, 98, calc(0.18 * var(--glow-opacity))), transparent 25%),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.2) 58%, transparent 76%);
+  background: radial-gradient(circle at var(--glow-x) var(--glow-y), rgba(24, 191, 98, calc(0.18 * var(--glow-opacity))), transparent 25%);
   border-radius: 0;
   filter: blur(8px);
   inset: -60%;

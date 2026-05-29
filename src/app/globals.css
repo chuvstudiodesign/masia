@@ -654,7 +654,7 @@ html {
   color: var(--label-color);
   display: grid;
   font-size: clamp(1rem, 2.6vw, 1.5rem);
-  font-weight: 850;
+  font-weight: 450;
   gap: 0.22rem;
   line-height: 1;
   place-items: center;
@@ -666,7 +666,7 @@ html {
 .radar-3d-label strong {
   color: #687386;
   font-size: clamp(1rem, 2.5vw, 1.45rem);
-  font-weight: 750;
+  font-weight: 450;
 }
 
 .radar-3d-depth-lines {

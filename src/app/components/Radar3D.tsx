@@ -268,7 +268,7 @@ export function Radar3D() {
               key={`${x}-${y}`}
               style={{ "--delay": `${0.72 + index * 0.09}s` } as CSSProperties}
             >
-              <circle cx={x} cy={y} fill="#ffffff" r="13" />
+              <circle cx={x} cy={y} fill="#ffffff" r="10.8" />
               <circle cx={x} cy={y} fill={labels[index].color} r="8.2" />
             </g>
           ))}

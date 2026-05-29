@@ -158,4 +158,645 @@ html {
   html {
     scroll-behavior: auto;
   }
+
+  .gerar-stage,
+  .gerar-float {
+    animation: none;
+  }
+}
+
+.gerar-stage {
+  animation: gerar-enter 950ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.gerar-float {
+  animation: gerar-float 6.5s ease-in-out 950ms infinite;
+  transform-origin: center;
+}
+
+@keyframes gerar-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(34px) scale(0.965);
+    filter: blur(14px);
+  }
+
+  58% {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes gerar-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotateX(0deg) rotateZ(0deg);
+  }
+
+  50% {
+    transform: translate3d(0, -16px, 0) rotateX(1.2deg) rotateZ(-0.35deg);
+  }
+}
+
+.generated-screen {
+  animation: generated-screen-enter 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  filter: drop-shadow(0 30px 90px rgba(15, 23, 42, 0.14));
+}
+
+.radar-card {
+  align-self: stretch;
+  border: 1px solid rgba(6, 78, 59, 0.08);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.09);
+  padding: 34px 28px;
+  backdrop-filter: blur(18px);
+}
+
+.radar-svg {
+  display: block;
+  margin-inline: auto;
+  max-width: 250px;
+  overflow: visible;
+  width: 100%;
+}
+
+.radar-grid {
+  animation: radar-grid-in 900ms ease-out both;
+  transform-origin: 150px 150px;
+}
+
+.radar-area {
+  animation: radar-area-in 1.1s cubic-bezier(0.16, 1, 0.3, 1) 320ms both;
+  transform-origin: 150px 150px;
+}
+
+.radar-line {
+  animation: radar-line-in 1s cubic-bezier(0.16, 1, 0.3, 1) 260ms both;
+  filter: drop-shadow(0 4px 10px rgba(239, 68, 68, 0.14));
+  transform-origin: 150px 150px;
+}
+
+.radar-dot {
+  animation: radar-dot-in 520ms cubic-bezier(0.16, 1, 0.3, 1) var(--delay) both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.radar-label {
+  animation: radar-label-in 720ms ease-out 650ms both;
+}
+
+.radar-scale {
+  display: grid;
+  gap: 4px;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  margin-top: 18px;
+}
+
+.radar-scale span {
+  animation: scale-line-in 780ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  background: #18bf62;
+  border-radius: 999px;
+  height: 5px;
+  transform-origin: left;
+}
+
+.radar-scale span:nth-child(1) {
+  animation-delay: 0.55s;
+}
+
+.radar-scale span:nth-child(2) {
+  animation-delay: 0.65s;
+}
+
+.radar-scale span:nth-child(3) {
+  animation-delay: 0.75s;
+  background: rgba(148, 163, 184, 0.18);
+}
+
+.radar-stages {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 12px;
+  text-align: center;
+}
+
+.radar-stages span,
+.radar-stages strong {
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.radar-stages strong {
+  color: #18bf62;
+}
+
+.pillar-row {
+  align-items: center;
+  animation: pillar-row-in 780ms cubic-bezier(0.16, 1, 0.3, 1) var(--delay) both;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(6, 78, 59, 0.08);
+  border-left: 5px solid var(--accent);
+  border-radius: 18px;
+  box-shadow: 0 18px 70px rgba(15, 23, 42, 0.075);
+  display: flex;
+  justify-content: space-between;
+  min-height: 74px;
+  padding: 18px 22px 18px 28px;
+  transform-origin: center;
+  backdrop-filter: blur(18px);
+}
+
+.pillar-key {
+  color: var(--accent);
+  font-size: 24px;
+  font-weight: 850;
+  line-height: 1;
+  min-width: 28px;
+}
+
+.pillar-row h2 {
+  color: #111827;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.pillar-row p {
+  color: #9aa7b7;
+  font-size: 12px;
+  font-weight: 650;
+  margin-top: 3px;
+}
+
+.pillar-row strong {
+  color: var(--accent);
+  font-size: 26px;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.pillar-bar {
+  background: rgba(148, 163, 184, 0.16);
+  border-radius: 999px;
+  display: block;
+  height: 5px;
+  overflow: hidden;
+  width: 74px;
+}
+
+.pillar-bar span {
+  animation: pillar-bar-in 900ms cubic-bezier(0.16, 1, 0.3, 1) calc(var(--delay) + 180ms) both;
+  background: var(--accent);
+  border-radius: inherit;
+  display: block;
+  height: 100%;
+  width: var(--score);
+  transform-origin: left;
+}
+
+@keyframes generated-screen-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(34px) scale(0.97);
+    filter: blur(16px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes radar-grid-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.88) rotate(-4deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes radar-area-in {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes radar-line-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes radar-dot-in {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  72% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes radar-label-in {
+  0% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-line-in {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pillar-row-in {
+  0% {
+    opacity: 0;
+    transform: translateX(42px) scale(0.975);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes pillar-bar-in {
+  0% {
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 900px) {
+  .generated-screen {
+    grid-template-columns: 1fr;
+    max-width: 680px;
+  }
+
+  .pillar-row {
+    gap: 18px;
+  }
+}
+
+.radar-3d-scene {
+  display: grid;
+  inset: 0;
+  min-height: 100vh;
+  place-items: center;
+  perspective: 1300px;
+  position: relative;
+  width: 100%;
+  z-index: 20;
+}
+
+.grafico-3d-page {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(24, 191, 98, 0.1), transparent 34%),
+    radial-gradient(circle at 30% 72%, rgba(139, 92, 246, 0.06), transparent 28%),
+    #f3fbf6;
+}
+
+.radar-3d-wrap {
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+  --dot-shadow-x: 0px;
+  --dot-shadow-y: 0px;
+  --dot-x: 0px;
+  --dot-y: 0px;
+  --fill-x: 0px;
+  --fill-y: 0px;
+  --floor-shift-x: 0px;
+  --floor-shift-y: 0px;
+  --glow-shift-x: 0px;
+  --glow-shift-y: 0px;
+  --grid-x: 0px;
+  --grid-y: 0px;
+  --label-x: 0px;
+  --label-y: 0px;
+  --line-shadow-x: 0px;
+  --line-shadow-y: 0px;
+  --line-x: 0px;
+  --line-y: 0px;
+  --shadow-x: 0px;
+  --shadow-y: 0px;
+  aspect-ratio: 520 / 540;
+  animation: radar3d-enter 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  border-radius: 0;
+  cursor: default;
+  position: relative;
+  transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) translate3d(0, 0, 0) translateY(0) scale(1);
+  transform-style: preserve-3d;
+  width: min(84vw, 720px);
+  will-change: transform;
+}
+
+.radar-3d-glow {
+  background:
+    radial-gradient(circle at var(--glow-x) var(--glow-y), rgba(24, 191, 98, 0.16), transparent 28%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.2) 58%, transparent 76%);
+  border-radius: 0;
+  filter: blur(8px);
+  inset: -60%;
+  position: absolute;
+  transform: translate3d(var(--glow-shift-x), var(--glow-shift-y), -90px);
+}
+
+.radar-3d-floor {
+  background: radial-gradient(ellipse at center, rgba(15, 23, 42, 0.15), transparent 64%);
+  border-radius: 999px;
+  filter: blur(18px);
+  height: 20%;
+  left: 19%;
+  opacity: 0.55;
+  position: absolute;
+  top: 73%;
+  transform: translate3d(var(--floor-shift-x), var(--floor-shift-y), -140px) rotateX(74deg);
+  width: 62%;
+}
+
+.radar-3d-layer {
+  height: 100%;
+  inset: 0;
+  display: block;
+  overflow: visible;
+  pointer-events: none;
+  position: absolute;
+  transform-style: preserve-3d;
+  width: 100%;
+}
+
+.radar-3d-shadow-layer {
+  filter: blur(0.2px);
+  opacity: 0.78;
+  transform: translate3d(var(--shadow-x), var(--shadow-y), -46px) scale(1.01);
+}
+
+.radar-3d-grid-layer {
+  filter: drop-shadow(0 18px 18px rgba(15, 23, 42, 0.08));
+  transform: translate3d(var(--grid-x), var(--grid-y), -34px);
+}
+
+.radar-3d-fill-layer {
+  transform: translate3d(var(--fill-x), var(--fill-y), 44px);
+}
+
+.radar-3d-line-layer {
+  filter: drop-shadow(var(--line-shadow-x) calc(18px + var(--line-shadow-y)) 16px rgba(239, 68, 68, 0.16));
+  transform: translate3d(var(--line-x), var(--line-y), 102px);
+}
+
+.radar-3d-dot-layer {
+  filter: drop-shadow(var(--dot-shadow-x) calc(18px + var(--dot-shadow-y)) 14px rgba(15, 23, 42, 0.2));
+  transform: translate3d(var(--dot-x), var(--dot-y), 164px);
+}
+
+.radar-3d-base-plate {
+  fill: rgba(255, 255, 255, 0.42);
+  stroke: rgba(15, 23, 42, 0.06);
+  stroke-width: 1;
+}
+
+.radar-3d-base-plate-small {
+  fill: rgba(15, 23, 42, 0.08);
+  opacity: 0.32;
+  transform: translateY(34px);
+}
+
+.radar-3d-grid {
+  animation: radar3d-grid-in 950ms ease-out 160ms both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.radar-3d-grid line {
+  animation: radar3d-axis-in 720ms ease-out calc(0.22s + var(--delay)) both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.radar-3d-fill {
+  animation: radar3d-fill-in 900ms cubic-bezier(0.16, 1, 0.3, 1) 460ms both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.radar-3d-line {
+  animation: radar3d-line-in 900ms cubic-bezier(0.16, 1, 0.3, 1) 560ms both;
+  filter: drop-shadow(0 10px 16px rgba(239, 68, 68, 0.16));
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.radar-3d-dot {
+  animation: radar3d-dot-in 580ms cubic-bezier(0.16, 1, 0.3, 1) var(--delay) both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.radar-3d-label-layer {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  transform: translate3d(var(--label-x), var(--label-y), 118px);
+  transform-style: preserve-3d;
+}
+
+.radar-3d-label {
+  animation: radar3d-label-in 680ms ease-out var(--delay) both;
+  color: var(--label-color);
+  display: grid;
+  font-size: clamp(1rem, 2.6vw, 1.5rem);
+  font-weight: 850;
+  gap: 0.22rem;
+  line-height: 1;
+  place-items: center;
+  position: absolute;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.radar-3d-label strong {
+  color: #687386;
+  font-size: clamp(1rem, 2.5vw, 1.45rem);
+  font-weight: 750;
+}
+
+.radar-3d-depth-lines {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  transform: translateZ(46px);
+  transform-style: preserve-3d;
+}
+
+.radar-3d-depth-lines span {
+  animation: radar3d-depth-in 520ms ease-out var(--delay) both;
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.18), transparent);
+  height: 66px;
+  position: absolute;
+  transform: translate3d(-50%, 10px, -82px);
+  width: 1px;
+}
+
+@keyframes radar3d-enter {
+  0% {
+    opacity: 0;
+    transform: rotateX(24deg) rotateY(-26deg) translate3d(0, 0, 0) translateY(48px) scale(0.84);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) translate3d(0, 0, 0) translateY(0) scale(1);
+  }
+}
+
+@keyframes radar3d-grid-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.72) rotate(-10deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes radar3d-axis-in {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes radar3d-fill-in {
+  0% {
+    opacity: 0;
+    transform: translateZ(-20px) scale(0.62);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateZ(0) scale(1);
+  }
+}
+
+@keyframes radar3d-line-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes radar3d-dot-in {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  72% {
+    opacity: 1;
+    transform: scale(1.22);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes radar3d-label-in {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 10px));
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes radar3d-depth-in {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, 0, -82px) scaleY(0.2);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(-50%, 10px, -82px) scaleY(1);
+  }
+}
+
+@media (max-width: 720px) {
+  .radar-3d-wrap {
+    width: min(94vw, 520px);
+  }
+
+  .radar-3d-wrap {
+    border-radius: 24px;
+  }
 }

@@ -503,6 +503,14 @@ html {
   background: #ececec;
 }
 
+.radar-inline .radar-3d-scene {
+  position: relative;
+  inset: auto;
+  min-height: 560px;
+  width: 100%;
+  z-index: 1;
+}
+
 .radar-3d-wrap {
   --glow-opacity: 1;
   --glow-x: 50%;

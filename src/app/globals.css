@@ -319,7 +319,7 @@ html {
 .pillar-key {
   color: var(--accent);
   font-size: 24px;
-  font-weight: 850;
+  font-weight: 750;
   line-height: 1;
   min-width: 28px;
 }

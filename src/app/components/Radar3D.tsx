@@ -257,7 +257,7 @@ export function Radar3D() {
             stroke="#ef4444"
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth="5.5"
+            strokeWidth="4.8"
           />
         </svg>
 

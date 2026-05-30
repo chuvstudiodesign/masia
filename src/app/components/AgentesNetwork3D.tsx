@@ -53,10 +53,11 @@ const centerState = { x: 0, y: 0, glowX: 50, glowY: 50, glowOpacity: 0 };
 export const AgentesNetwork3D = forwardRef<AgentesNetwork3DHandle, object>(
 function AgentesNetwork3D(_, ref) {
   const [hovered, setHovered] = useState<string | null>(null);
+  const [visible, setVisible] = useState(false);
   const wrapRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
   const animRef = useRef<number | null>(null);
-  const leaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hoverLeaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const currentRef = useRef({ ...centerState });
   const targetRef = useRef({ ...centerState });
@@ -68,8 +69,8 @@ function AgentesNetwork3D(_, ref) {
   function applyMotion(x: number, y: number, glowX: number, glowY: number, glowOpacity: number) {
     const el = wrapRef.current;
     if (!el) return;
-    el.style.setProperty("--rot-y",         `${x * 22}deg`);
-    el.style.setProperty("--rot-x",         `${-y * 16}deg`);
+    el.style.setProperty("--rot-y",         `${x * 10}deg`);
+    el.style.setProperty("--rot-x",         `${-y * 7}deg`);
     el.style.setProperty("--glow-x",        `${glowX}%`);
     el.style.setProperty("--glow-y",        `${glowY}%`);
     el.style.setProperty("--glow-opacity",  `${glowOpacity}`);
@@ -126,10 +127,6 @@ function AgentesNetwork3D(_, ref) {
   }
 
   function handlePointerMove(clientX: number, clientY: number) {
-    if (leaveTimerRef.current) {
-      clearTimeout(leaveTimerRef.current);
-      leaveTimerRef.current = null;
-    }
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
     const x = (clientX - rect.left) / rect.width - 0.5;
@@ -142,12 +139,9 @@ function AgentesNetwork3D(_, ref) {
   }
 
   function handlePointerLeave() {
-    leaveTimerRef.current = setTimeout(() => {
-      leaveTimerRef.current = null;
-      returningRef.current = true;
-      targetRef.current = { ...centerState };
-      startMotion();
-    }, 80);
+    returningRef.current = true;
+    targetRef.current = { ...centerState };
+    startMotion();
   }
 
   useImperativeHandle(ref, () => ({
@@ -155,14 +149,32 @@ function AgentesNetwork3D(_, ref) {
     onLeave: handlePointerLeave,
   }));
 
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold: 0.15 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   useEffect(() => () => {
     if (animRef.current) cancelAnimationFrame(animRef.current);
-    if (leaveTimerRef.current) clearTimeout(leaveTimerRef.current);
     if (hoverLeaveTimerRef.current) clearTimeout(hoverLeaveTimerRef.current);
   }, []);
 
   return (
-    <div className="flex flex-col gap-3">
+    <div
+      ref={rootRef}
+      className="flex flex-col gap-3"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0px)" : "translateY(16px)",
+        transition: "opacity 0.65s ease-out, transform 0.65s ease-out",
+      }}
+    >
       {/* 3D Scene */}
       <div
         ref={containerRef}
@@ -224,9 +236,12 @@ function AgentesNetwork3D(_, ref) {
               stroke={hovered === "maestro" ? "#18bf6255" : "rgba(236,72,153,0.18)"}
               strokeWidth={hovered === "maestro" ? "0.55" : "0.4"}
               strokeDasharray={hovered === "maestro" ? "none" : "1.4 1.4"}
-              style={{ transition: "stroke 0.3s ease, stroke-width 0.3s ease" }}
+              style={{
+                transition: "stroke 0.3s ease, stroke-width 0.3s ease, opacity 0.5s ease 0.1s",
+                opacity: visible ? 1 : 0,
+              }}
             />
-            {agents.map((agent) => {
+            {agents.map((agent, i) => {
               const { x, y } = agentPos(agent.angle);
               const active = hovered === agent.id;
               return (
@@ -237,14 +252,17 @@ function AgentesNetwork3D(_, ref) {
                   strokeWidth={active ? "0.6" : "0.28"}
                   strokeOpacity={active ? 1 : 0.7}
                   strokeDasharray={active ? "none" : "1.2 1"}
-                  style={{ transition: "stroke 0.2s, stroke-opacity 0.2s, stroke-width 0.2s" }}
+                  style={{
+                    transition: `stroke 0.2s, stroke-opacity 0.2s, stroke-width 0.2s, opacity 0.4s ease ${0.18 + i * 0.055}s`,
+                    opacity: visible ? 1 : 0,
+                  }}
                 />
               );
             })}
           </svg>
 
           {/* ── Outer agents ── */}
-          {agents.map((agent) => {
+          {agents.map((agent, i) => {
             const { x, y } = agentPos(agent.angle);
             const active = hovered === agent.id;
             const z = active ? 58 : 32;
@@ -257,9 +275,10 @@ function AgentesNetwork3D(_, ref) {
                   top: `${y - NODE_R}%`,
                   width: `${NODE_R * 2}%`,
                   transform: `translate3d(var(--agent-x, 0px), var(--agent-y, 0px), ${z}px) scale(${active ? 1.18 : 1})`,
-                  transition: "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                  transition: `transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.45s ease ${0.22 + i * 0.065}s`,
                   zIndex: active ? 10 : 1,
                   cursor: "pointer",
+                  opacity: visible ? 1 : 0,
                 } as React.CSSProperties}
                 onMouseEnter={() => {
                   if (hoverLeaveTimerRef.current) {
@@ -330,6 +349,8 @@ function AgentesNetwork3D(_, ref) {
               top: `${CY - CENTER_R}%`,
               width: `${CENTER_R * 2}%`,
               transform: "translate3d(var(--center-x, 0px), var(--center-y, 0px), 80px)",
+              opacity: visible ? 1 : 0,
+              transition: "opacity 0.5s ease 0.05s",
             } as React.CSSProperties}
           >
             {/* Farol glow ring */}
@@ -387,7 +408,10 @@ function AgentesNetwork3D(_, ref) {
       </div>
 
       {/* Badge */}
-      <div className="flex justify-center">
+      <div
+        className="flex justify-center"
+        style={{ opacity: visible ? 1 : 0, transition: "opacity 0.45s ease 0.62s" }}
+      >
         <div
           className="flex items-center gap-2 border px-3 py-1.5 backdrop-blur"
           style={{

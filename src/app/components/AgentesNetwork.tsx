@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CX = 50;
 const CY = 50;
@@ -46,12 +46,33 @@ const agents: Agent[] = [
 
 export function AgentesNetwork({ grid = true }: { grid?: boolean }) {
   const [hovered, setHovered] = useState<string | null>(null);
+  const [visible, setVisible] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold: 0.15 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   const hoveredAgent = agents.find((a) => a.id === hovered) ?? null;
   const badgeAgent = hoveredAgent ?? FAROL;
 
   return (
-    <div className="flex flex-col gap-3">
+    <div
+      ref={rootRef}
+      className="flex flex-col gap-3"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0px)" : "translateY(14px)",
+        transition: "opacity 0.65s ease-out, transform 0.65s ease-out",
+      }}
+    >
       {/* Network */}
       <div className="relative w-full" style={{ aspectRatio: "1" }}>
 
@@ -68,7 +89,7 @@ export function AgentesNetwork({ grid = true }: { grid?: boolean }) {
           />
         )}
 
-        {/* Center glow — color shifts on hover */}
+        {/* Center glow */}
         <div
           className="absolute rounded-full pointer-events-none"
           style={{
@@ -89,18 +110,21 @@ export function AgentesNetwork({ grid = true }: { grid?: boolean }) {
           style={{ pointerEvents: "none" }}
           aria-hidden="true"
         >
-          {/* Outer dashed ring */}
+          {/* Outer ring */}
           <circle
             cx={CX} cy={CY} r={RING}
             fill="none"
             stroke={hovered === "maestro" ? "#18bf6255" : "rgba(236,72,153,0.15)"}
             strokeWidth={hovered === "maestro" ? "0.5" : "0.35"}
             strokeDasharray={hovered === "maestro" ? "none" : "1.4 1.4"}
-            style={{ transition: "stroke 0.3s ease, stroke-width 0.3s ease" }}
+            style={{
+              transition: "stroke 0.3s ease, stroke-width 0.3s ease, opacity 0.5s ease 0.1s",
+              opacity: visible ? 1 : 0,
+            }}
           />
 
           {/* Connecting lines */}
-          {agents.map((agent) => {
+          {agents.map((agent, i) => {
             const { x, y } = agentPos(agent.angle);
             const active = hovered === agent.id;
             return (
@@ -112,7 +136,8 @@ export function AgentesNetwork({ grid = true }: { grid?: boolean }) {
                 strokeOpacity={active ? 1 : 0.7}
                 strokeDasharray={active ? "none" : "1.2 1"}
                 style={{
-                  transition: "stroke 0.2s ease, stroke-opacity 0.2s ease, stroke-width 0.2s ease",
+                  transition: `stroke 0.2s ease, stroke-opacity 0.2s ease, stroke-width 0.2s ease, opacity 0.4s ease ${0.18 + i * 0.055}s`,
+                  opacity: visible ? 1 : 0,
                 }}
               />
             );
@@ -126,6 +151,8 @@ export function AgentesNetwork({ grid = true }: { grid?: boolean }) {
             left: `${CX - CENTER_R}%`,
             top: `${CY - CENTER_R}%`,
             width: `${CENTER_R * 2}%`,
+            opacity: visible ? 1 : 0,
+            transition: "opacity 0.5s ease 0.05s",
           }}
         >
           <div
@@ -152,7 +179,7 @@ export function AgentesNetwork({ grid = true }: { grid?: boolean }) {
         </div>
 
         {/* Outer agent nodes */}
-        {agents.map((agent) => {
+        {agents.map((agent, i) => {
           const { x, y } = agentPos(agent.angle);
           const active = hovered === agent.id;
           return (
@@ -166,7 +193,8 @@ export function AgentesNetwork({ grid = true }: { grid?: boolean }) {
                 zIndex: active ? 10 : 1,
                 transform: active ? "scale(1.22)" : "scale(1)",
                 transformOrigin: "center",
-                transition: "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                transition: `transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.45s ease ${0.22 + i * 0.065}s`,
+                opacity: visible ? 1 : 0,
               }}
               onMouseEnter={() => setHovered(agent.id)}
               onMouseLeave={() => setHovered(null)}
@@ -194,8 +222,14 @@ export function AgentesNetwork({ grid = true }: { grid?: boolean }) {
         })}
       </div>
 
-      {/* Badge below panel */}
-      <div className="flex justify-center">
+      {/* Badge */}
+      <div
+        className="flex justify-center"
+        style={{
+          opacity: visible ? 1 : 0,
+          transition: "opacity 0.45s ease 0.62s",
+        }}
+      >
         <div
           className="flex items-center gap-2 border px-3 py-1.5 backdrop-blur"
           style={{
@@ -225,7 +259,6 @@ export function AgentesNetwork({ grid = true }: { grid?: boolean }) {
           </p>
         </div>
       </div>
-
     </div>
   );
 }

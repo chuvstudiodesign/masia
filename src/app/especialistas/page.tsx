@@ -20,7 +20,7 @@ const specialists = [
     name: "Designer IA",
     description:
       "Gera artes, banners, posts, stories e anúncios em tempo real, sempre no estilo da marca",
-    cost: "R$ 3.000 – 8.000/mês",
+    cost: "R$ 3.000 – 10.000/mês",
     image: "/images/agentes-nobg/Designer.png",
     color: "#a855f7",
   },

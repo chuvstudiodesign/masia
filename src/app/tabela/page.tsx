@@ -128,8 +128,39 @@ export default function TabelaPage() {
           </p>
         </div>
 
-        {/* Table card */}
-        <div className="overflow-hidden rounded-[24px] border border-emerald-950/10 bg-white shadow-sm">
+        {/* ── Mobile layout: one card per feature ── */}
+        <div className="sm:hidden space-y-3 mb-8">
+          {rows.map(row => (
+            <div key={row.feature} className="rounded-[20px] border border-emerald-950/10 bg-white overflow-hidden">
+              <div className="px-4 py-3 border-b border-slate-100">
+                <p className="text-sm font-semibold text-slate-800">{row.feature}</p>
+              </div>
+              <div className="grid grid-cols-3">
+                {/* masIA */}
+                <div style={{ background: "#f0fdf4", borderRight: "1px solid rgba(24,191,98,0.15)", padding: "14px 8px", display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                  <p style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.08em", color: "#16a34a", textTransform: "uppercase", margin: 0 }}>masIA</p>
+                  <div style={{ width: 24, height: 24, borderRadius: "50%", background: "#18bf62", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 800 }}>✓</div>
+                  {row.masia.label && <span style={{ fontSize: 10, color: "#166534", fontWeight: 600, lineHeight: 1.3, textAlign: "center" }}>{row.masia.label}</span>}
+                </div>
+                {/* Genérica */}
+                <div style={{ borderRight: "1px solid rgba(0,0,0,0.06)", padding: "14px 8px", display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                  <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.06em", color: "#94a3b8", textTransform: "uppercase", margin: 0 }}>IA genérica</p>
+                  {(() => { const ic = row.generica.check === "yes" ? { bg:"#dcfce7",c:"#16a34a",s:"✓"} : row.generica.check === "no" ? {bg:"#fee2e2",c:"#dc2626",s:"✕"} : {bg:"#f1f5f9",c:"#94a3b8",s:"—"}; return <div style={{ width: 24, height: 24, borderRadius:"50%", background:ic.bg, color:ic.c, display:"flex", alignItems:"center", justifyContent:"center", fontSize:12, fontWeight:800 }}>{ic.s}</div>; })()}
+                  {row.generica.label && <span style={{ fontSize: 10, color: "#64748b", lineHeight: 1.3, textAlign: "center" }}>{row.generica.label}</span>}
+                </div>
+                {/* Consultoria */}
+                <div style={{ padding: "14px 8px", display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                  <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.06em", color: "#94a3b8", textTransform: "uppercase", margin: 0 }}>Consultoria</p>
+                  {(() => { const ic = row.consultoria.check === "yes" ? { bg:"#dcfce7",c:"#16a34a",s:"✓"} : row.consultoria.check === "no" ? {bg:"#fee2e2",c:"#dc2626",s:"✕"} : {bg:"#f1f5f9",c:"#94a3b8",s:"—"}; return <div style={{ width: 24, height: 24, borderRadius:"50%", background:ic.bg, color:ic.c, display:"flex", alignItems:"center", justifyContent:"center", fontSize:12, fontWeight:800 }}>{ic.s}</div>; })()}
+                  {row.consultoria.label && <span style={{ fontSize: 10, color: "#64748b", lineHeight: 1.3, textAlign: "center" }}>{row.consultoria.label}</span>}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── Desktop table ── */}
+        <div className="hidden sm:block overflow-hidden rounded-[24px] border border-emerald-950/10 bg-white shadow-sm">
 
           {/* Column headers */}
           <div style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1fr", borderBottom: "1px solid rgba(0,0,0,0.07)" }}>
@@ -192,7 +223,7 @@ export default function TabelaPage() {
               </div>
             </div>
           ))}
-        </div>
+        </div>{/* end desktop table */}
 
         {/* Closing copy */}
         <div className="mt-8 rounded-[20px] border border-emerald-950/10 bg-white px-8 py-7">

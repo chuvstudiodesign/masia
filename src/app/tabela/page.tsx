@@ -169,10 +169,7 @@ export default function TabelaPage() {
 
             {/* masIA */}
             <div style={{ padding: "20px 16px", background: "#f0fdf4", borderLeft: "1px solid rgba(0,0,0,0.06)", textAlign: "center", borderRight: "1px solid rgba(0,0,0,0.06)" }}>
-              <span style={{ display: "inline-block", background: "#18bf62", color: "#fff", borderRadius: 999, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", padding: "3px 10px", marginBottom: 6 }}>
-                RECOMENDADO
-              </span>
-              <Image src="/images/logotipo.png" alt="masIA" width={80} height={28} style={{ margin: "0 auto", objectFit: "contain" }} />
+<Image src="/images/logotipo.png" alt="masIA" width={134} height={48} style={{ margin: "10px auto 0", display: "block", objectFit: "contain" }} />
             </div>
 
             {/* Genérica */}

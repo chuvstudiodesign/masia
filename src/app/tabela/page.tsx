@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "masIA vs. Concorrência | Comparativo",
@@ -171,7 +172,7 @@ export default function TabelaPage() {
               <span style={{ display: "inline-block", background: "#18bf62", color: "#fff", borderRadius: 999, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", padding: "3px 10px", marginBottom: 6 }}>
                 RECOMENDADO
               </span>
-              <p style={{ fontSize: 15, fontWeight: 800, color: "#0a0a0a", margin: 0 }}>masIA</p>
+              <Image src="/images/logotipo.png" alt="masIA" width={80} height={28} style={{ margin: "0 auto", objectFit: "contain" }} />
             </div>
 
             {/* Genérica */}

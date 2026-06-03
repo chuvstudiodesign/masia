@@ -6,7 +6,7 @@ import { Space_Grotesk } from 'next/font/google';
 const sg = Space_Grotesk({ subsets: ['latin'], weight: ['700'] });
 
 const LAYER_COUNT = 14;
-const TOTAL_DEPTH = 32;
+const TOTAL_DEPTH = 22;
 const CHAMFER     = 30;
 const CR          = 8;
 
@@ -52,8 +52,10 @@ function GlassCard({ label, floatPhase = 0, baseRotY = 10 }: CardProps) {
   useEffect(() => {
     const updateClip = () => {
       if (!wrapRef.current) return;
-      const { width: W, height: H } = wrapRef.current.getBoundingClientRect();
-      wrapRef.current.style.setProperty('--clip-path', `path('${buildPath(W, H)}')`);
+      // offsetWidth/Height = pre-transform layout size, unaffected by ancestor scale
+      const W = wrapRef.current.offsetWidth;
+      const H = wrapRef.current.offsetHeight;
+      if (W && H) wrapRef.current.style.setProperty('--clip-path', `path('${buildPath(W, H)}')`);
     };
     updateClip();
     const ro = new ResizeObserver(updateClip);

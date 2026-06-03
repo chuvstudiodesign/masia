@@ -799,6 +799,7 @@ html {
   .erps-group {
     transform: scale(0.8);
     transform-origin: center center;
+    transform-style: preserve-3d;
   }
 }
 

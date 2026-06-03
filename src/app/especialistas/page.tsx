@@ -88,11 +88,11 @@ const specialists = [
 export default function EspecialistasPage() {
   return (
     <main className="min-h-screen bg-[#ECECEC] text-[#111827]">
-      <section className="mx-auto w-full max-w-7xl px-5 py-10 sm:px-8">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="mx-auto w-full max-w-6xl px-5 py-9 sm:px-7">
+        <div className="grid gap-[18px] sm:grid-cols-2 lg:grid-cols-4">
           {specialists.map((specialist) => (
             <article
-              className="group flex min-h-[410px] flex-col rounded-[10px] border border-black/10 bg-white p-5 shadow-[0_18px_55px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(15,23,42,0.12)]"
+              className="group flex min-h-[370px] flex-col rounded-[10px] border border-black/10 bg-white p-[18px] shadow-[0_16px_50px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_25px_72px_rgba(15,23,42,0.12)]"
               key={specialist.name}
               style={
                 {
@@ -102,12 +102,12 @@ export default function EspecialistasPage() {
                 } as React.CSSProperties
               }
             >
-              <div className="flex justify-center pb-5 pt-2">
+              <div className="flex justify-center pb-[18px] pt-2">
                 <div
-                  className="relative size-[108px] overflow-hidden rounded-full bg-white"
+                  className="relative size-[97px] overflow-hidden rounded-full bg-white"
                   style={{
                     border: `2px solid ${specialist.color}`,
-                    boxShadow: `0 8px 28px ${specialist.color}35, 0 0 0 4px ${specialist.color}18`,
+                    boxShadow: `0 7px 25px ${specialist.color}35, 0 0 0 4px ${specialist.color}18`,
                   }}
                 >
                   <Image
@@ -121,22 +121,22 @@ export default function EspecialistasPage() {
               </div>
 
               <div className="flex min-w-0 flex-1 flex-col text-center">
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#12984e]">
+                <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#12984e]">
                   {specialist.label ?? "ESPECIALISTA"}
                 </p>
-                <h2 className="mt-2 text-2xl font-semibold leading-tight text-slate-950">
+                <h2 className="mt-2 text-[22px] font-semibold leading-tight text-slate-950">
                   {specialist.name}
                 </h2>
-                <p className="mt-4 flex-1 text-sm leading-6 text-slate-600">
+                <p className="mt-3.5 flex-1 text-[13px] leading-[22px] text-slate-600">
                   {specialist.description}
                 </p>
-                <div className="mt-4 rounded-[10px] border border-slate-950/10 bg-[#ECECEC] px-4 py-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                <div className="mt-3.5 rounded-[10px] border border-slate-950/10 bg-[#ECECEC] px-3.5 py-3">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
                     Custo equivalente
                     <br />
                     no mercado
                   </p>
-                  <p className="mt-1 text-[15px] font-semibold text-slate-950">
+                  <p className="mt-1 text-[14px] font-semibold text-slate-950">
                     {specialist.cost}
                   </p>
                 </div>

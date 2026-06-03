@@ -6,9 +6,9 @@ import { Space_Grotesk } from 'next/font/google';
 const sg = Space_Grotesk({ subsets: ['latin'], weight: ['700'] });
 
 const LAYER_COUNT = 14;
-const TOTAL_DEPTH = 42;
-const CHAMFER     = 36;
-const CR          = 10;
+const TOTAL_DEPTH = 32;
+const CHAMFER     = 30;
+const CR          = 8;
 
 function buildPath(W: number, H: number): string {
   const R = 36, C = CHAMFER, r = CR, d = r * Math.SQRT1_2;
@@ -126,8 +126,8 @@ function GlassCard({ label, floatPhase = 0, baseRotY = 10 }: CardProps) {
 
       <div style={{
         position: 'relative',
-        padding: '22px 68px',
-        minHeight: 130,
+        padding: '19px 58px',
+        minHeight: 110,
         display: 'flex',
         alignItems: 'center',
         borderRadius: 36,
@@ -170,7 +170,7 @@ function GlassCard({ label, floatPhase = 0, baseRotY = 10 }: CardProps) {
           background: 'linear-gradient(to bottom, transparent 55%, rgba(0,0,0,0.05) 100%)',
         }} />
         <span style={{
-          fontSize: '3.2rem',
+          fontSize: '2.72rem',
           fontWeight: 700,
           letterSpacing: '-0.03em',
           lineHeight: 1,
@@ -223,7 +223,7 @@ export default function ErpsPage() {
       }} />
 
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 44 }}>
-        <div style={{ display: 'flex', gap: 44, alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: 37, alignItems: 'center' }}>
           <GlassCard label="ERPs"  floatPhase={0}   baseRotY={10} />
           <GlassCard label="CRMs"  floatPhase={1.8} baseRotY={-10} />
         </div>

@@ -23,8 +23,6 @@ const specialists = [
     cost: "R$ 3.000 – 8.000/mês",
     image: "/images/agentes-nobg/Designer.png",
     color: "#a855f7",
-    avatarZoom: "140%",
-    avatarYOffset: "-32%",
   },
   {
     name: "Copywriter IA",
@@ -33,8 +31,6 @@ const specialists = [
     cost: "R$ 2.500 – 7.000/mês",
     image: "/images/agentes-nobg/Briefer.png",
     color: "#f59e0b",
-    avatarZoom: "140%",
-    avatarYOffset: "-32%",
   },
   {
     name: "Analista de BI IA",

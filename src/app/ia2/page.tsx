@@ -1,541 +1,495 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Image from "next/image";
+import { DM_Sans } from "next/font/google";
+
+const dm = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export const metadata: Metadata = {
-  title: "Como usar IA para aumentar o faturamento | MASI IA",
+  title: "Como usar IA para aumentar o faturamento | masIA",
   description:
     "A masIA amplifica o que você já sabe fazer. Com 9 especialistas treinados pelo Breno Masi analisando sua empresa, gerando planos e identificando oportunidades.",
 };
 
 const pillars = [
   {
-    label: "Detecta",
+    label: "DETECTA",
     title: "Oportunidades e riscos",
     text: "O Sentinela monitora mercado, concorrência e sinais que podem afetar a empresa.",
   },
   {
-    label: "Prioriza",
+    label: "PRIORIZA",
     title: "Gaps de maior impacto",
     text: "O Raio-X mostra onde vendas, marketing, gestão, escala e financeiro precisam de atenção.",
   },
   {
-    label: "Sugere",
+    label: "SUGERE",
     title: "Próximas ações",
     text: "Os agentes transformam diagnósticos em recomendações com motivo, prioridade e responsável.",
   },
   {
-    label: "Acompanha",
+    label: "ACOMPANHA",
     title: "Rotinas de execução",
     text: "Automações revisam KPIs, briefings, scorecards, coaching e atualização estratégica.",
   },
 ];
 
 const steps = [
-  {
-    num: "01",
-    title: "Diagnostique",
-    text: "A empresa passa pelo Raio-X MASI para mapear maturidade, gargalos e oportunidades.",
-  },
-  {
-    num: "02",
-    title: "Priorize",
-    text: "A plataforma organiza Score MASI, SWOT, OKRs e frentes críticas de melhoria.",
-  },
-  {
-    num: "03",
-    title: "Aprove",
-    text: "Agentes sugerem ações práticas. O gestor revisa, aprova, ajusta ou rejeita.",
-  },
-  {
-    num: "04",
-    title: "Acompanhe",
-    text: "Ações aprovadas viram tarefas, rotinas e ciclos acompanháveis pela empresa.",
-  },
+  { num: "1", title: "Diagnóstico", text: "A empresa passa pelo Raio-X MASI para mapear maturidade, gargalos e oportunidades." },
+  { num: "2", title: "Priorize", text: "A plataforma organiza Score MASI, SWOT, OKRs e frentes críticas de melhoria." },
+  { num: "3", title: "Aprove", text: "Agentes sugerem ações práticas. O gestor revisa, aprova, ajusta ou rejeita." },
+  { num: "4", title: "Acompanhe", text: "Ações aprovadas viram tarefas, rotinas e ciclos acompanháveis pela empresa." },
 ];
 
 const faq = [
-  {
-    q: "A masIA é um curso de inteligência artificial?",
-    a: "Não. É uma plataforma de mentoria e aceleração empresarial com IA aplicada à gestão, diagnóstico, estratégia e execução.",
-  },
-  {
-    q: "A plataforma substitui o empresário ou a liderança?",
-    a: "Não. Ela analisa, organiza e recomenda. A decisão continua com os empresários e gestores.",
-  },
-  {
-    q: "As ações são executadas automaticamente?",
-    a: "As recomendações passam por aprovação. Depois disso, podem virar tarefas, rotinas ou acompanhamentos dentro da plataforma.",
-  },
-];
-
-const integrations = [
-  "Sem trocar de plataforma",
-  "Sem perder contexto",
-  "Sem começar do zero cada vez",
+  { q: "A masIA é um curso de inteligência artificial?", a: "Não. É uma plataforma de mentoria e aceleração empresarial com IA aplicada à gestão, diagnóstico, estratégia e execução." },
+  { q: "A plataforma substitui o empresário ou a liderança?", a: "Não. Ela analisa, organiza e recomenda. A decisão continua com os empresários e gestores." },
+  { q: "As ações são executadas automaticamente?", a: "As recomendações passam por aprovação. Depois disso, podem virar tarefas, rotinas ou acompanhamentos dentro da plataforma." },
 ];
 
 export default function IA2Page() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#d4d4d4] text-[#111827]">
+    <div className={dm.className} style={{ background: "#f5f5f5", color: "#111" }}>
 
-      {/* ── Nav ─────────────────────────────────────────────────────── */}
-      <header className="sticky top-0 z-50 border-b border-black/8 bg-[#d4d4d4]/85 backdrop-blur-xl">
-        <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-5 sm:px-8">
-          <Link className="flex items-center gap-3" href="/">
-            <span className="grid size-9 place-items-center rounded-xl bg-[#18bf62] text-sm font-bold text-white shadow-lg shadow-emerald-500/25">
-              M
-            </span>
-            <span className="text-base font-semibold tracking-tight">MASI IA</span>
-          </Link>
-          <nav className="hidden items-center gap-7 text-sm font-medium text-slate-600 lg:flex">
-            <a href="#agentes">Agentes</a>
-            <a href="#especialistas">Especialistas</a>
-            <a href="#integracoes">Integrações</a>
-            <a href="#faq">FAQ</a>
+      {/* ── NAV ─────────────────────────────────────────────────────────── */}
+      <header style={{
+        position: "sticky", top: 0, zIndex: 50,
+        background: "rgba(245,245,245,0.88)",
+        backdropFilter: "blur(18px)",
+        borderBottom: "1px solid rgba(0,0,0,0.07)",
+      }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 28px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          {/* Logo */}
+          <a href="https://masinegocios.com.br" style={{ display: "flex", alignItems: "center", gap: 8, textDecoration: "none" }}>
+            <span style={{ fontWeight: 700, fontSize: 17, color: "#111", letterSpacing: "-0.02em" }}>masi negócios</span>
+          </a>
+          {/* Links */}
+          <nav style={{ display: "flex", gap: 28, alignItems: "center" }}>
+            {["Início", "Workshop", "Action", "Aceleração", "Founder", "Advisor", "Academy"].map(l => (
+              <a key={l} href="https://masinegocios.com.br" style={{ fontSize: 13, color: "#444", textDecoration: "none", fontWeight: 500 }}>{l}</a>
+            ))}
           </nav>
-          <a
-            href="https://ia.masinegocios.com.br/"
-            className="inline-flex h-10 items-center justify-center rounded-full bg-[#18bf62] px-5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 transition hover:bg-[#12a955]"
-          >
-            Solicitar acesso
+          {/* CTA */}
+          <a href="https://ia.masinegocios.com.br/" style={{
+            background: "#18bf62", color: "#fff",
+            borderRadius: 999, padding: "8px 20px",
+            fontSize: 13, fontWeight: 700, textDecoration: "none",
+            letterSpacing: "0.02em",
+          }}>
+            XPMIA
           </a>
         </div>
       </header>
 
-      {/* ── Hero ────────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen overflow-hidden">
-        {/* Background iframe */}
+      {/* ── HERO ────────────────────────────────────────────────────────── */}
+      <section style={{ position: "relative", minHeight: "100vh", overflow: "hidden", background: "#f5f5f5" }}>
+        {/* Background embed */}
         <iframe
           src="/background"
-          className="pointer-events-none absolute inset-0 h-full w-full border-0"
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none", pointerEvents: "none" }}
           aria-hidden="true"
           tabIndex={-1}
         />
-        {/* Gradient overlay */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#d4d4d4]" />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(245,245,245,0) 60%, rgba(245,245,245,1) 100%)" }} />
 
-        {/* Content */}
-        <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col items-start justify-center px-5 pb-20 pt-24 sm:px-8">
-          {/* Badges */}
-          <div className="mb-6 flex flex-wrap gap-3">
-            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-slate-700 shadow-sm backdrop-blur">
-              <span className="size-1.5 rounded-full bg-[#18bf62]" />
-              Acesso por convite
-            </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-slate-500 shadow-sm backdrop-blur">
-              47/50 análises preenchidas este mês
-            </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-50/80 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-emerald-700 shadow-sm backdrop-blur">
-              3 análises disponíveis
-            </span>
+        <div style={{ position: "relative", zIndex: 10, maxWidth: 1280, margin: "0 auto", padding: "0 28px", minHeight: "100vh", display: "grid", gridTemplateColumns: "1fr 1fr", alignItems: "center", gap: 48 }}>
+          {/* Left */}
+          <div>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#18bf62", color: "#fff", borderRadius: 999, padding: "4px 14px", fontSize: 12, fontWeight: 700, marginBottom: 24 }}>
+              masi
+            </div>
+            <h1 style={{ fontSize: "clamp(2.2rem, 3.5vw, 3.4rem)", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.03em", color: "#0a0a0a", maxWidth: 540, margin: "0 0 24px" }}>
+              Como usar IA para aumentar o faturamento, reduzir custos e multiplicar produtividade na sua empresa.
+            </h1>
+            <p style={{ fontSize: 16, lineHeight: 1.7, color: "#555", maxWidth: 460, marginBottom: 36 }}>
+              A masIA amplifica o que você já sabe fazer. Com 9 especialistas treinados pelo Breno Masi analisando sua empresa, gerando planos e identificando oportunidades que você não teria tempo de enxergar sozinho.
+            </p>
+            <a href="https://ia.masinegocios.com.br/" style={{
+              display: "inline-flex", alignItems: "center", justifyContent: "center",
+              background: "#18bf62", color: "#fff", borderRadius: 999,
+              padding: "14px 32px", fontSize: 14, fontWeight: 700, textDecoration: "none",
+              letterSpacing: "0.04em",
+            }}>
+              SOLICITAR ACESSO
+            </a>
           </div>
 
-          <h1 className="max-w-4xl text-5xl font-semibold leading-[1.04] tracking-tight text-slate-950 text-balance sm:text-6xl lg:text-7xl">
-            Como usar IA para aumentar o faturamento, reduzir custos e multiplicar produtividade na sua empresa.
-          </h1>
+          {/* Right — Spline placeholder + floating cards */}
+          <div style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "center", height: 580 }}>
+            {/* TODO: substituir pelo iframe do Spline quando URL disponível */}
+            <div style={{
+              width: 280, height: 560,
+              borderRadius: 44, border: "8px solid rgba(0,0,0,0.1)",
+              background: "linear-gradient(160deg, #e8f5ee 0%, #c8e6d4 100%)",
+              boxShadow: "0 40px 100px rgba(0,0,0,0.15)",
+              overflow: "hidden",
+              position: "relative",
+            }}>
+              <Image src="/images/masi-platform/raio-x.png" alt="masIA app" fill style={{ objectFit: "cover", objectPosition: "top" }} />
+            </div>
+            {/* Card: 16 Agentes Ativos */}
+            <div style={{
+              position: "absolute", top: 80, left: -20,
+              background: "rgba(255,255,255,0.92)",
+              backdropFilter: "blur(16px)",
+              borderRadius: 16, padding: "12px 16px",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+              border: "1px solid rgba(0,0,0,0.06)",
+              minWidth: 160,
+            }}>
+              <p style={{ fontSize: 11, color: "#888", fontWeight: 500, marginBottom: 4 }}>Agentes Ativos</p>
+              <p style={{ fontSize: 26, fontWeight: 700, color: "#0a0a0a" }}>16</p>
+              <div style={{ display: "flex", gap: 4, marginTop: 6 }}>
+                {["#18bf62","#3b82f6","#f59e0b","#ec4899"].map(c => (
+                  <span key={c} style={{ width: 22, height: 22, borderRadius: "50%", background: c, border: "2px solid #fff" }} />
+                ))}
+              </div>
+            </div>
+            {/* Card: Insta Creator */}
+            <div style={{
+              position: "absolute", bottom: 100, right: -30,
+              background: "rgba(255,255,255,0.92)",
+              backdropFilter: "blur(16px)",
+              borderRadius: 16, padding: "12px 16px",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+              border: "1px solid rgba(0,0,0,0.06)",
+              maxWidth: 200,
+            }}>
+              <p style={{ fontSize: 12, fontWeight: 700, color: "#0a0a0a", marginBottom: 2 }}>Insta Creator</p>
+              <p style={{ fontSize: 11, color: "#666" }}>Gerando artes 100% Autônoma.</p>
+            </div>
+          </div>
+        </div>
 
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-700">
-            A masIA amplifica o que você já sabe fazer. Com 9 especialistas treinados pelo Breno Masi analisando sua empresa, gerando planos e identificando oportunidades que você não teria tempo de enxergar sozinho.
+        {/* Bottom access bar */}
+        <div style={{
+          position: "absolute", bottom: 0, left: 0, right: 0,
+          borderTop: "1px solid rgba(0,0,0,0.08)",
+          background: "rgba(245,245,245,0.9)",
+          backdropFilter: "blur(12px)",
+          display: "flex", alignItems: "center", justifyContent: "center", gap: 40,
+          padding: "14px 28px", zIndex: 10,
+        }}>
+          {[
+            { dot: true, text: "ACESSO POR CONVITE" },
+            { text: "47/50 ANÁLISES PREENCHIDAS ESTE MÊS" },
+            { text: "3 ANÁLISES DISPONÍVEIS", green: true },
+          ].map((item, i) => (
+            <span key={i} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: item.green ? "#18bf62" : "#666" }}>
+              {item.dot && <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#18bf62" }} />}
+              {item.text}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* ── PILARES ─────────────────────────────────────────────────────── */}
+      <section style={{ background: "#fff", padding: "100px 28px" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", textAlign: "center" }}>
+          <h2 style={{ fontSize: "clamp(2rem, 3vw, 3rem)", fontWeight: 700, letterSpacing: "-0.03em", color: "#0a0a0a", maxWidth: 700, margin: "0 auto 12px" }}>
+            Transforme diagnóstico em execução com agentes de IA.
+          </h2>
+          <p style={{ fontSize: 16, color: "#666", marginBottom: 56 }}>
+            Prioridades claras, ações coordenadas e acompanhamento contínuo.
           </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, textAlign: "left", marginBottom: 48 }}>
+            {pillars.map(p => (
+              <div key={p.label} style={{ borderRadius: 16, border: "1px solid rgba(0,0,0,0.08)", padding: "24px 20px", background: "#fafafa" }}>
+                <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", color: "#18bf62", marginBottom: 12 }}>{p.label}</p>
+                <h3 style={{ fontSize: 15, fontWeight: 700, color: "#0a0a0a", marginBottom: 8 }}>{p.title}</h3>
+                <p style={{ fontSize: 13, color: "#666", lineHeight: 1.6 }}>{p.text}</p>
+              </div>
+            ))}
+          </div>
+          <a href="https://ia.masinegocios.com.br/" style={{
+            display: "inline-flex", alignItems: "center", justifyContent: "center",
+            background: "#18bf62", color: "#fff", borderRadius: 999,
+            padding: "14px 36px", fontSize: 13, fontWeight: 700,
+            textDecoration: "none", letterSpacing: "0.04em",
+          }}>
+            VER COMO FUNCIONAR
+          </a>
+        </div>
+      </section>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a
-              href="https://ia.masinegocios.com.br/"
-              className="inline-flex h-13 items-center justify-center rounded-full bg-[#18bf62] px-8 text-sm font-semibold text-white shadow-xl shadow-emerald-500/25 transition hover:bg-[#12a955]"
-            >
-              Solicitar acesso
+      {/* ── AGENTES NETWORK ─────────────────────────────────────────────── */}
+      <section style={{ background: "#fff", padding: "80px 28px", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+          <div>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", color: "#18bf62", marginBottom: 16 }}>TIME DE IA</p>
+            <h2 style={{ fontSize: "clamp(1.8rem, 2.8vw, 2.8rem)", fontWeight: 700, letterSpacing: "-0.03em", color: "#0a0a0a", marginBottom: 20, lineHeight: 1.1 }}>
+              Agentes especializados trabalhando em paralelo pela sua empresa.
+            </h2>
+            <p style={{ fontSize: 15, color: "#666", lineHeight: 1.7, marginBottom: 36 }}>
+              Para cada especialista da masIA, existe um profissional de mercado equivalente que você pagaria por mês. Veja a diferença.
+            </p>
+            <a href="https://ia.masinegocios.com.br/" style={{
+              display: "inline-flex", alignItems: "center", justifyContent: "center",
+              background: "#18bf62", color: "#fff", borderRadius: 999,
+              padding: "14px 32px", fontSize: 13, fontWeight: 700,
+              textDecoration: "none", letterSpacing: "0.04em",
+            }}>
+              SOLICITAR ACESSO
             </a>
-            <a
-              href="#como-funciona"
-              className="inline-flex h-13 items-center justify-center rounded-full border border-black/10 bg-white/65 px-8 text-sm font-semibold text-slate-800 backdrop-blur transition hover:bg-white"
-            >
-              Ver como funciona
-            </a>
+          </div>
+          <div style={{ borderRadius: 24, overflow: "hidden", height: 560 }}>
+            <iframe src="/agentes-2" style={{ width: "100%", height: "100%", border: "none" }} title="Rede de Agentes" />
           </div>
         </div>
       </section>
 
-      {/* ── Pilares ─────────────────────────────────────────────────── */}
-      <section className="relative bg-[#d4d4d4] py-24">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <h2 className="text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl">
-                Transforme diagnóstico em execução com agentes de IA.
-              </h2>
-              <p className="mt-5 text-lg text-slate-600">
-                Prioridades claras, ações coordenadas e acompanhamento contínuo.
-              </p>
-              <a
-                href="https://ia.masinegocios.com.br/"
-                className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-[#18bf62] px-7 text-sm font-semibold text-white shadow-xl shadow-emerald-500/20 transition hover:bg-[#12a955]"
-              >
-                Ver como funciona
-              </a>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {pillars.map((p) => (
-                <article
-                  key={p.title}
-                  className="rounded-2xl border border-black/8 bg-white/60 p-5 backdrop-blur"
-                >
-                  <span className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">
-                    {p.label}
-                  </span>
-                  <h3 className="mt-4 text-lg font-semibold text-slate-950">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{p.text}</p>
-                </article>
+      {/* ── ESPECIALISTAS ───────────────────────────────────────────────── */}
+      <section style={{ background: "#fff", padding: "80px 0", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto 48px", padding: "0 28px", textAlign: "center" }}>
+          <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", color: "#18bf62", marginBottom: 16 }}>O TIME QUE VOCÊ SEMPRE QUIS TER</p>
+          <h2 style={{ fontSize: "clamp(2rem, 3vw, 3rem)", fontWeight: 700, letterSpacing: "-0.03em", color: "#0a0a0a", marginBottom: 16 }}>
+            9 especialistas. Um time completo. Disponíveis agora.
+          </h2>
+          <p style={{ fontSize: 15, color: "#666", maxWidth: 600, margin: "0 auto 36px", lineHeight: 1.7 }}>
+            Para cada especialista da masIA, existe um profissional de mercado equivalente que você pagaria por mês. Veja a diferença.
+          </p>
+          <a href="https://ia.masinegocios.com.br/" style={{
+            display: "inline-flex", alignItems: "center", justifyContent: "center",
+            background: "#18bf62", color: "#fff", borderRadius: 999,
+            padding: "14px 32px", fontSize: 13, fontWeight: 700,
+            textDecoration: "none", letterSpacing: "0.04em",
+          }}>
+            SOLICITAR ACESSO
+          </a>
+        </div>
+        <div style={{ width: "100%", overflow: "hidden" }}>
+          <iframe src="/especialistas" style={{ width: "100%", height: 860, border: "none", display: "block" }} title="Especialistas MASI" />
+        </div>
+      </section>
+
+      {/* ── ERPs / INTEGRAÇÕES ──────────────────────────────────────────── */}
+      <section style={{ background: "#f0fdf4", padding: "80px 0", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto 48px", padding: "0 28px", textAlign: "center" }}>
+          <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", color: "#18bf62", marginBottom: 16 }}>O TIME QUE VOCÊ SEMPRE QUER TER</p>
+          <h2 style={{ fontSize: "clamp(2rem, 3vw, 3rem)", fontWeight: 700, letterSpacing: "-0.03em", color: "#0a0a0a", marginBottom: 16 }}>
+            A MasIA se conecta ao sistema que você já usa.
+          </h2>
+          <p style={{ fontSize: 15, color: "#555", maxWidth: 600, margin: "0 auto 36px", lineHeight: 1.7 }}>
+            Integração com os principais ERPs, CRMs e plataformas de checkout do mercado. Com conexão nativa a todos os seus sistemas, a masIA lê os dados de onde eles já estão, sem planilha manual, sem precisar trocar de ferramenta.
+          </p>
+          <a href="https://ia.masinegocios.com.br/" style={{
+            display: "inline-flex", alignItems: "center", justifyContent: "center",
+            background: "#18bf62", color: "#fff", borderRadius: 999,
+            padding: "14px 32px", fontSize: 13, fontWeight: 700,
+            textDecoration: "none", letterSpacing: "0.04em", marginBottom: 48,
+          }}>
+            SOLICITAR ACESSO
+          </a>
+        </div>
+        <div style={{ width: "100%", overflow: "hidden" }}>
+          <iframe src="/erps" style={{ width: "100%", height: 680, border: "none", display: "block" }} title="ERPs CRMs Checkout" />
+        </div>
+        <div style={{ maxWidth: 1280, margin: "40px auto 0", padding: "0 28px", display: "flex", justifyContent: "center", gap: 16, flexWrap: "wrap" }}>
+          {["SEM TROCAR DE PLATAFORMA", "SEM PERDER CONTEXTO", "SEM COMEÇAR DO ZERO CADA VEZ"].map(l => (
+            <span key={l} style={{
+              borderRadius: 999, border: "1px solid rgba(0,0,0,0.12)",
+              background: "#fff", padding: "10px 22px",
+              fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", color: "#444",
+            }}>{l}</span>
+          ))}
+        </div>
+        <div style={{ textAlign: "center", marginTop: 32 }}>
+          <a href="https://ia.masinegocios.com.br/" style={{
+            display: "inline-flex", alignItems: "center", justifyContent: "center",
+            background: "#18bf62", color: "#fff", borderRadius: 999,
+            padding: "14px 32px", fontSize: 13, fontWeight: 700,
+            textDecoration: "none", letterSpacing: "0.04em",
+          }}>
+            SOLICITAR ACESSO
+          </a>
+        </div>
+      </section>
+
+      {/* ── RAIO-X ──────────────────────────────────────────────────────── */}
+      <section style={{ background: "#f5f5f5", padding: "80px 28px", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+          <div style={{ borderRadius: 24, overflow: "hidden", height: 560 }}>
+            <iframe src="/grafico-3d" style={{ width: "100%", height: "100%", border: "none" }} title="Raio-X do Negócio" />
+          </div>
+          <div>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", color: "#18bf62", marginBottom: 16 }}>RAIO-X DO NEGÓCIO</p>
+            <h2 style={{ fontSize: "clamp(1.8rem, 2.6vw, 2.7rem)", fontWeight: 700, letterSpacing: "-0.03em", color: "#0a0a0a", marginBottom: 20, lineHeight: 1.1 }}>
+              Antes do plano de ação, a plataforma entende onde a empresa realmente está.
+            </h2>
+            <p style={{ fontSize: 15, color: "#666", lineHeight: 1.7, marginBottom: 32 }}>
+              O Diagnóstico MASI analisa marketing, vendas, sistemas de gestão, inovação, escala e financeiro. O Score MASI mostra a maturidade da empresa e ajuda a priorizar o que limita o crescimento.
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+              {["SCORE MASI", "PILARES DE MATURIDADE", "ÁREAS CRÍTICAS", "BASE PARA OKRS"].map(l => (
+                <div key={l} style={{
+                  borderRadius: 10, border: "1px solid rgba(0,0,0,0.1)",
+                  background: "#fff", padding: "12px 16px",
+                  fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", color: "#444",
+                }}>{l}</div>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Agentes Network ─────────────────────────────────────────── */}
-      <section className="relative bg-[#0f1a10] py-20 text-white" id="agentes">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <div className="text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-400">
-              O time que você sempre quis ter
-            </p>
-            <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-              9 especialistas. Um time completo.<br className="hidden sm:block" /> Disponíveis agora.
+      {/* ── SENTINELA ───────────────────────────────────────────────────── */}
+      <section style={{ background: "#18bf62", padding: "80px 28px" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+          <div>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.7)", marginBottom: 16 }}>SENTINELA</p>
+            <h2 style={{ fontSize: "clamp(1.8rem, 2.6vw, 2.7rem)", fontWeight: 700, letterSpacing: "-0.03em", color: "#fff", marginBottom: 20, lineHeight: 1.1 }}>
+              Inteligência de mercado para não decidir no escuro.
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-emerald-50/70">
-              A masIA não entrega respostas soltas. Cada agente atua em uma frente da gestão, conectado ao diagnóstico, aos objetivos e à realidade do negócio.
+            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.8)", lineHeight: 1.7, marginBottom: 32 }}>
+              O Sentinela monitora sinais relevantes, concorrência, tendências e oportunidades. Em vez de notícias soltas, você recebe leituras contextualizadas para o seu negócio.
             </p>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+              {["ATIVOS", "ALERTAS", "OPORTUNIDADES", "NEUTROS"].map(l => (
+                <div key={l} style={{
+                  borderRadius: 10, border: "1px solid rgba(255,255,255,0.3)",
+                  background: "rgba(255,255,255,0.15)", padding: "12px 16px",
+                  fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", color: "#fff",
+                }}>{l}</div>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="mx-auto mt-10 w-full max-w-[560px] px-4">
-          <div className="overflow-hidden rounded-3xl">
-            <iframe
-              src="/agentes-2"
-              className="h-[620px] w-full border-0"
-              title="Rede de Agentes MASI IA"
+          <div style={{ borderRadius: 20, overflow: "hidden", boxShadow: "0 32px 80px rgba(0,0,0,0.2)" }}>
+            <Image
+              src="/images/masi-platform/sentinela.png"
+              alt="Sentinela — Inteligência de mercado"
+              width={700}
+              height={460}
+              style={{ width: "100%", height: "auto", display: "block" }}
             />
           </div>
         </div>
-        <div className="mt-10 text-center">
-          <a
-            href="https://ia.masinegocios.com.br/"
-            className="inline-flex h-12 items-center justify-center rounded-full bg-[#18bf62] px-8 text-sm font-semibold text-white shadow-xl shadow-emerald-500/20 transition hover:bg-[#12a955]"
-          >
-            Solicitar acesso
-          </a>
-        </div>
       </section>
 
-      {/* ── Especialistas ───────────────────────────────────────────── */}
-      <section className="relative bg-[#d4d4d4] py-20" id="especialistas">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <div className="text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">
-              Time de IA
-            </p>
-            <h2 className="mt-4 text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
-              9 especialistas. Um time completo. Disponíveis agora.
-            </h2>
-            <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-slate-600">
-              Para cada especialista da masIA, existe um profissional de mercado equivalente que você pagaria por mês. Veja a diferença.
-            </p>
-          </div>
-        </div>
-        <div className="mt-10 w-full overflow-hidden">
-          <iframe
-            src="/especialistas"
-            className="h-[880px] w-full border-0"
-            title="Especialistas MASI IA"
-          />
-        </div>
-        <div className="mt-8 text-center">
-          <a
-            href="https://ia.masinegocios.com.br/"
-            className="inline-flex h-12 items-center justify-center rounded-full bg-[#18bf62] px-8 text-sm font-semibold text-white shadow-xl shadow-emerald-500/20 transition hover:bg-[#12a955]"
-          >
-            Solicitar acesso
-          </a>
-        </div>
-      </section>
-
-      {/* ── ERPs / Integrações ──────────────────────────────────────── */}
-      <section className="relative bg-[#ececec] py-20" id="integracoes">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">
-                Integrações
-              </p>
-              <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl">
-                A masIA se conecta ao sistema que você já usa.
-              </h2>
-              <p className="mt-5 text-base leading-7 text-slate-600">
-                Integrações nativas com ERPs, CRMs e plataformas de checkout. Sem planilhas manuais, sem troca de ferramentas, sem começar do zero a cada reunião.
-              </p>
-              <div className="mt-7 grid gap-3">
-                {integrations.map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-center gap-3 rounded-xl border border-black/8 bg-white/70 px-4 py-3 text-sm font-semibold text-slate-700"
-                  >
-                    <span className="size-2 shrink-0 rounded-full bg-[#18bf62]" />
-                    {item}
-                  </div>
-                ))}
-              </div>
-              <a
-                href="https://ia.masinegocios.com.br/"
-                className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-[#18bf62] px-7 text-sm font-semibold text-white shadow-xl shadow-emerald-500/20 transition hover:bg-[#12a955]"
-              >
-                Solicitar acesso
-              </a>
-            </div>
-            <div className="overflow-hidden rounded-3xl">
-              <iframe
-                src="/erps"
-                className="h-[660px] w-full border-0"
-                title="ERPs, CRMs e Checkout"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Raio-X / Grafico 3D ─────────────────────────────────────── */}
-      <section className="relative bg-[#d4d4d4] py-20" id="raio-x">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div className="overflow-hidden rounded-3xl">
-              <iframe
-                src="/grafico-3d"
-                className="h-[660px] w-full border-0"
-                title="Raio-X do Negócio"
-              />
-            </div>
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">
-                Raio-X do negócio
-              </p>
-              <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl">
-                Antes do plano de ação, a plataforma entende onde a empresa realmente está.
-              </h2>
-              <p className="mt-5 text-base leading-7 text-slate-600">
-                O Diagnóstico MASI analisa marketing, vendas, sistemas de gestão, inovação, escala e financeiro. O Score MASI mostra a maturidade da empresa e ajuda a priorizar o que limita o crescimento.
-              </p>
-              <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                {["Score MASI", "Pilares de maturidade", "Áreas críticas", "Base para OKRs"].map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-xl border border-black/8 bg-white/60 px-4 py-3 text-sm font-semibold text-slate-700"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Sentinela ───────────────────────────────────────────────── */}
-      <section className="relative bg-[#0f1a10] py-20 text-white">
-        <div className="mx-auto grid w-full max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:items-center">
+      {/* ── DA ANÁLISE PARA A AÇÃO ──────────────────────────────────────── */}
+      <section style={{ background: "#fff", padding: "80px 28px", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-400">
-              Sentinela
-            </p>
-            <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-              Inteligência de mercado para não decidir no escuro.
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", color: "#18bf62", marginBottom: 16 }}>DA ANÁLISE PARA A AÇÃO</p>
+            <h2 style={{ fontSize: "clamp(1.8rem, 2.6vw, 2.7rem)", fontWeight: 700, letterSpacing: "-0.03em", color: "#0a0a0a", marginBottom: 20, lineHeight: 1.1 }}>
+              A IA sugere. Você aprova. A empresa executa com clareza.
             </h2>
-            <p className="mt-5 text-base leading-7 text-emerald-50/70">
-              O Sentinela monitora sinais relevantes, concorrência, tendências e oportunidades. Em vez de notícias soltas, você recebe leituras contextualizadas para o seu negócio.
+            <p style={{ fontSize: 15, color: "#666", lineHeight: 1.7, marginBottom: 36 }}>
+              As recomendações vêm com prioridade, origem, pilar MASI, responsável sugerido e motivo. O gestor mantém o controle antes de transformar uma sugestão em tarefa.
             </p>
-            <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {[["Ativos", "16"], ["Alertas", "0"], ["Oportunidades", "5"], ["Neutros", "8"]].map(([label, val]) => (
-                <div key={label} className="rounded-2xl border border-white/10 bg-white/[0.06] p-4">
-                  <p className="text-2xl font-semibold text-[#18bf62]">{val}</p>
-                  <p className="mt-1 text-xs font-medium uppercase tracking-[0.12em] text-emerald-200/70">{label}</p>
-                </div>
-              ))}
-            </div>
+            <a href="https://ia.masinegocios.com.br/" style={{
+              display: "inline-flex", alignItems: "center", justifyContent: "center",
+              background: "#18bf62", color: "#fff", borderRadius: 999,
+              padding: "14px 32px", fontSize: 13, fontWeight: 700,
+              textDecoration: "none", letterSpacing: "0.04em",
+            }}>
+              SOLICITAR ACESSO
+            </a>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
-            <p className="text-sm font-semibold text-emerald-300">Leitura estratégica desta semana</p>
-            <p className="mt-4 text-base leading-7 text-emerald-50/80">
-              "Identificamos 3 movimentos da concorrência direta que afetam sua margem de captação. Recomendamos revisão do posicionamento de preço no plano anual antes do trimestre."
-            </p>
-            <p className="mt-4 text-xs text-emerald-500">Gerado pelo Sentinela · Atualizado há 2h</p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Da análise para a ação ──────────────────────────────────── */}
-      <section className="relative bg-[#d4d4d4] py-20">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">
-                Da análise para a ação
-              </p>
-              <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl">
-                A IA sugere. Você aprova. A empresa executa com clareza.
-              </h2>
-              <p className="mt-5 text-base leading-7 text-slate-600">
-                As recomendações vêm com prioridade, origem, pilar MASI, responsável sugerido e motivo. O gestor mantém o controle antes de transformar uma sugestão em tarefa.
-              </p>
-              <a
-                href="https://ia.masinegocios.com.br/"
-                className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-[#18bf62] px-7 text-sm font-semibold text-white shadow-xl shadow-emerald-500/20 transition hover:bg-[#12a955]"
-              >
-                Solicitar acesso
-              </a>
-            </div>
-            <div className="grid gap-3">
-              {[
-                { label: "Alta prioridade", title: "Revisar proposta comercial", desc: "Pilar: Vendas · Responsável: SDR IA", status: "Aprovar" },
-                { label: "Média prioridade", title: "Publicar conteúdo semanal", desc: "Pilar: Marketing · Responsável: Social Media IA", status: "Aprovar" },
-                { label: "Alta prioridade", title: "Analisar margem do produto X", desc: "Pilar: Financeiro · Responsável: BI IA", status: "Em análise" },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  className="flex items-center justify-between gap-4 rounded-2xl border border-black/8 bg-white/60 p-4 backdrop-blur"
-                >
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-emerald-700">{item.label}</p>
-                    <p className="mt-1 text-sm font-semibold text-slate-900">{item.title}</p>
-                    <p className="text-xs text-slate-500">{item.desc}</p>
-                  </div>
-                  <span className="shrink-0 rounded-full bg-[#18bf62]/10 px-3 py-1 text-xs font-semibold text-emerald-700">
-                    {item.status}
-                  </span>
-                </div>
-              ))}
-            </div>
+          <div style={{
+            borderRadius: 32, overflow: "hidden",
+            boxShadow: "0 32px 80px rgba(0,0,0,0.12)",
+            border: "8px solid rgba(0,0,0,0.08)",
+            background: "#f0f0f0",
+            display: "flex", alignItems: "flex-start", justifyContent: "center",
+            maxWidth: 300, margin: "0 auto",
+          }}>
+            <Image
+              src="/images/masi-platform/sugestoes.png"
+              alt="Ações sugeridas pelos agentes"
+              width={300}
+              height={520}
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
           </div>
         </div>
       </section>
 
-      {/* ── Como funciona ───────────────────────────────────────────── */}
-      <section className="relative bg-[#ececec] py-24" id="como-funciona">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">
-                Como funciona
-              </p>
-              <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl">
-                Da análise à execução, sem perder o fio da estratégia.
-              </h2>
-              <p className="mt-5 text-base leading-7 text-slate-600">
-                O sistema cria uma cadência de gestão: diagnostica, prioriza, recomenda e acompanha os próximos movimentos.
-              </p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {steps.map((s) => (
-                <article
-                  key={s.title}
-                  className="rounded-2xl border border-black/8 bg-white/60 p-5 backdrop-blur"
-                >
-                  <span className="text-sm font-semibold text-[#18bf62]">{s.num}</span>
-                  <h3 className="mt-3 text-lg font-semibold text-slate-950">{s.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{s.text}</p>
-                </article>
-              ))}
-            </div>
+      {/* ── COMO FUNCIONA ───────────────────────────────────────────────── */}
+      <section style={{ background: "#f5f5f5", padding: "100px 28px", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", textAlign: "center" }}>
+          <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", color: "#18bf62", marginBottom: 16 }}>COMO FUNCIONA</p>
+          <h2 style={{ fontSize: "clamp(2rem, 3vw, 3rem)", fontWeight: 700, letterSpacing: "-0.03em", color: "#0a0a0a", marginBottom: 12 }}>
+            Da análise à execução, sem perder o fio da estratégia.
+          </h2>
+          <p style={{ fontSize: 15, color: "#666", marginBottom: 56 }}>
+            O sistema cria uma cadência de gestão: diagnostica, prioriza, recomenda e acompanha os próximos movimentos.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, textAlign: "left", marginBottom: 48 }}>
+            {steps.map(s => (
+              <div key={s.title} style={{ borderRadius: 16, border: "1px solid rgba(0,0,0,0.08)", background: "#fff", padding: "24px 20px" }}>
+                <p style={{ fontSize: 13, fontWeight: 700, color: "#18bf62", marginBottom: 12 }}>{s.num}</p>
+                <h3 style={{ fontSize: 16, fontWeight: 700, color: "#0a0a0a", marginBottom: 8 }}>{s.title}</h3>
+                <p style={{ fontSize: 13, color: "#666", lineHeight: 1.6 }}>{s.text}</p>
+              </div>
+            ))}
           </div>
+          <a href="https://ia.masinegocios.com.br/" style={{
+            display: "inline-flex", alignItems: "center", justifyContent: "center",
+            background: "#18bf62", color: "#fff", borderRadius: 999,
+            padding: "14px 36px", fontSize: 13, fontWeight: 700,
+            textDecoration: "none", letterSpacing: "0.04em",
+          }}>
+            SOLICITAR ACESSO
+          </a>
         </div>
       </section>
 
-      {/* ── FAQ ─────────────────────────────────────────────────────── */}
-      <section className="relative bg-[#d4d4d4] py-24" id="faq">
-        <div className="mx-auto w-full max-w-4xl px-5 sm:px-8">
-          <div className="text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">FAQ</p>
-            <h2 className="mt-4 text-4xl font-semibold tracking-tight text-slate-950">
-              3 Perguntas frequentes sobre a masIA
+      {/* ── FAQ ─────────────────────────────────────────────────────────── */}
+      <section style={{ background: "#f5f5f5", padding: "100px 28px", borderTop: "1px solid rgba(0,0,0,0.08)" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: 64, alignItems: "start" }}>
+          <div>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", color: "#18bf62", marginBottom: 16 }}>FAQ</p>
+            <h2 style={{ fontSize: "clamp(1.8rem, 2.4vw, 2.6rem)", fontWeight: 700, letterSpacing: "-0.03em", color: "#0a0a0a", lineHeight: 1.1 }}>
+              3 Perguntas frequentes sobre a MasIA
             </h2>
           </div>
-          <div className="mt-10 grid gap-4">
-            {faq.map((item) => (
-              <article
-                key={item.q}
-                className="rounded-2xl border border-black/8 bg-white/60 p-6 backdrop-blur"
-              >
-                <h3 className="text-lg font-semibold text-slate-950">{item.q}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{item.a}</p>
-              </article>
+          <div style={{ display: "grid", gap: 12 }}>
+            {faq.map((item, i) => (
+              <details key={i} style={{ borderRadius: 14, border: "1px solid rgba(0,0,0,0.09)", background: "#fff", overflow: "hidden" }}>
+                <summary style={{ padding: "18px 20px", fontSize: 14, fontWeight: 600, color: "#0a0a0a", cursor: "pointer", listStyle: "none", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  {item.q}
+                  <span style={{ fontSize: 18, color: "#18bf62", flexShrink: 0, marginLeft: 12 }}>+</span>
+                </summary>
+                <p style={{ padding: "0 20px 18px", fontSize: 14, color: "#666", lineHeight: 1.7 }}>{item.a}</p>
+              </details>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── CTA Final ───────────────────────────────────────────────── */}
-      <section className="relative bg-[#0f1a10] py-24 text-white">
-        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-          <div className="overflow-hidden rounded-[32px] border border-white/8 bg-white/[0.04] px-8 py-16 text-center sm:px-14">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-400">Acesso</p>
-            <h2 className="mx-auto mt-4 max-w-3xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-              Sua empresa precisa de mais do que ideias. Precisa de direção, método e execução.
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-emerald-50/70">
-              Solicite acesso à masIA e veja como transformar diagnóstico, estratégia e acompanhamento em uma rotina de gestão mais clara, inteligente e acionável.
-            </p>
-            <a
-              href="https://ia.masinegocios.com.br/"
-              className="mt-10 inline-flex h-14 items-center justify-center rounded-full bg-[#18bf62] px-10 text-base font-semibold text-white shadow-xl shadow-emerald-500/20 transition hover:bg-[#12a955]"
-            >
-              Solicitar acesso à masIA
-            </a>
-            <p className="mt-4 text-xs text-emerald-50/40">
-              Acesso por convite · Para empresários e lideranças que querem accelerar com método e controle.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Footer ──────────────────────────────────────────────────── */}
-      <footer className="bg-[#0a1209] px-5 py-12 text-sm text-emerald-50/50 sm:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {/* ── FOOTER ──────────────────────────────────────────────────────── */}
+      <footer style={{ background: "#f0f0f0", borderTop: "1px solid rgba(0,0,0,0.08)", padding: "64px 28px 32px" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: 48, marginBottom: 48 }}>
             <div>
-              <div className="flex items-center gap-3">
-                <span className="grid size-9 place-items-center rounded-xl bg-[#18bf62] text-sm font-bold text-white">M</span>
-                <span className="text-base font-semibold text-white">MASI IA</span>
-              </div>
-              <p className="mt-4 text-sm leading-6">
-                Mentoria empresarial com inteligência artificial aplicada à gestão, diagnóstico e execução.
+              <p style={{ fontSize: 16, fontWeight: 700, color: "#0a0a0a", marginBottom: 12 }}>masi negócios</p>
+              <p style={{ fontSize: 13, color: "#777", lineHeight: 1.7 }}>
+                Acreditamos que o futuro do Brasil está na força do empreendedorismo.
               </p>
             </div>
             <div>
-              <p className="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-emerald-400">Programas</p>
-              <div className="grid gap-2">
-                {["Workshop", "Action", "Aceleração", "Founder", "Advisor", "Academy"].map((item) => (
-                  <a key={item} href="https://masinegocios.com.br" className="hover:text-white transition">{item}</a>
-                ))}
-              </div>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", color: "#888", marginBottom: 16 }}>HOME</p>
+              {["Founder", "Workshop", "Action", "Aceleração", "Presencial", "Advisor", "Academy"].map(l => (
+                <a key={l} href="https://masinegocios.com.br" style={{ display: "block", fontSize: 13, color: "#555", textDecoration: "none", marginBottom: 8 }}>{l}</a>
+              ))}
             </div>
             <div>
-              <p className="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-emerald-400">Redes</p>
-              <div className="grid gap-2">
-                <a href="https://instagram.com/masinegocios" className="hover:text-white transition">Instagram</a>
-                <a href="https://youtube.com/@masinegocios" className="hover:text-white transition">YouTube</a>
-              </div>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", color: "#888", marginBottom: 16 }}>REDES SOCIAIS</p>
+              {[["Instagram", "https://www.instagram.com/masinegocios"], ["YouTube", "https://www.youtube.com/masinegocios"]].map(([l, href]) => (
+                <a key={l} href={href} style={{ display: "block", fontSize: 13, color: "#555", textDecoration: "none", marginBottom: 8 }}>{l}</a>
+              ))}
             </div>
             <div>
-              <p className="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-emerald-400">Suporte</p>
-              <div className="grid gap-2">
-                <a href="https://masinegocios.com.br" className="hover:text-white transition">Central de Ajuda</a>
-                <a href="https://masinegocios.com.br" className="hover:text-white transition">Política de Privacidade</a>
-                <a href="https://masinegocios.com.br" className="hover:text-white transition">Termos de Serviço</a>
-                <a href="https://masinegocios.com.br/contato" className="hover:text-white transition">Contato</a>
-              </div>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", color: "#888", marginBottom: 16 }}>MAIS INFORMAÇÕES</p>
+              {["Central de Ajuda", "Política de Privacidade", "Termos de Serviço", "Contato"].map(l => (
+                <a key={l} href="https://masinegocios.com.br" style={{ display: "block", fontSize: 13, color: "#555", textDecoration: "none", marginBottom: 8 }}>{l}</a>
+              ))}
             </div>
           </div>
-          <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/8 pt-6 sm:flex-row">
-            <p>© 2026 MASI IA · Todos os direitos reservados</p>
-            <p>Criado por <a href="https://chuvstudio.com" className="hover:text-white transition">Chuv Studio</a></p>
+          <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <p style={{ fontSize: 12, color: "#999" }}>© 2025 Masi Mais | Criado por <a href="https://www.chuv.studio" style={{ color: "#18bf62", textDecoration: "none" }}>Chuv Studio</a></p>
           </div>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }

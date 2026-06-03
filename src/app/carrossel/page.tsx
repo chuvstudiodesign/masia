@@ -18,12 +18,23 @@ export default function CarrosselPage() {
   const [dragOffset, setDragOffset] = useState(0);
   const [dragging, setDragging] = useState(false);
   const [isGenerating, setIsGenerating] = useState(true);
+  const [caption, setCaption] = useState('');
   const dragStartX = useRef(0);
   const total = CAROUSEL_SLIDES.length;
+  const FULL_CAPTION = 'Você sabia que 87% dos empreendedores ainda criam conteúdo manualmente? Com a masIA, sua marca publica todos os dias — sem você precisar abrir uma única ferramenta. #MarketingDigital #IA #Empreendedorismo';
 
   useEffect(() => {
-    const t = setTimeout(() => setIsGenerating(false), 4000);
-    return () => clearTimeout(t);
+    const gen = setTimeout(() => {
+      setIsGenerating(false);
+      let i = 0;
+      const interval = setInterval(() => {
+        i++;
+        setCaption(FULL_CAPTION.slice(0, i));
+        if (i >= FULL_CAPTION.length) clearInterval(interval);
+      }, 22);
+      return () => clearInterval(interval);
+    }, 4000);
+    return () => clearTimeout(gen);
   }, []);
 
   const goTo = (i: number) => setSlide(Math.max(0, Math.min(total - 1, i)));
@@ -137,12 +148,15 @@ export default function CarrosselPage() {
             <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#262626" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="ml-auto"><polygon points="19 21 12 16 5 21 5 3 19 3"/></svg>
           </div>
           <p className="text-[11px] font-semibold text-slate-800">2.847 curtidas</p>
-          <div className="mt-1 min-h-[48px] text-[11px] leading-[1.55] text-slate-700">
+          <div className="mt-1 text-[11px] leading-[1.55] text-slate-700" style={{ height: 78, overflow: 'hidden' }}>
             {isGenerating ? (
               <span className="italic text-slate-400">Gerando copy...</span>
-            ) : (
-              <><strong>suamarca</strong>{' '}Você sabia que 87% dos empreendedores ainda criam conteúdo manualmente? Com a masIA, sua marca publica todos os dias — sem você precisar abrir uma única ferramenta. <span style={{ color: '#18bf62' }}>#MarketingDigital #IA #Empreendedorismo</span></>
-            )}
+            ) : (() => {
+              const hi = caption.indexOf('#');
+              const text = hi === -1 ? caption : caption.slice(0, hi);
+              const tags = hi === -1 ? '' : caption.slice(hi);
+              return <><strong>suamarca</strong>{' '}{text}{tags && <span style={{ color: '#18bf62' }}>{tags}</span>}<span className="animate-pulse">|</span></>;
+            })()}
           </div>
         </div>
       </div>

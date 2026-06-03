@@ -796,6 +796,14 @@ html {
 }
 
 @media (max-width: 768px) {
+  .inimigo-cards {
+    transform: scale(0.9);
+    transform-origin: top center;
+    transform-style: preserve-3d;
+  }
+}
+
+@media (max-width: 768px) {
   .erps-group {
     transform: scale(0.8);
     transform-origin: center center;

@@ -16,11 +16,11 @@ const problems = [
   },
   {
     icon: "◉",
-    text: "Decisões que demoram porque a análise demora",
+    text: "Decisões que ficam para depois porque a análise demora e custa caro",
   },
   {
     icon: "✦",
-    text: "Oportunidades que passam porque ninguém estava olhando para elas",
+    text: "Oportunidades que escapam porque ninguém estava olhando para elas",
   },
 ];
 
@@ -62,7 +62,7 @@ export default function InimigoPage() {
       </header>
 
       {/* ── CARDS ────────────────────────────────────────────────────────── */}
-      <div style={{ padding: "16px", display: "flex", flexDirection: "column", gap: 12 }}>
+      <div className="inimigo-cards" style={{ padding: "16px", display: "flex", flexDirection: "column", gap: 12 }}>
 
         {/* ── INTRO CARD ─────────────────────────────────────────────────── */}
         <div style={card({ padding: "80px 56px 72px" })}>
@@ -88,60 +88,64 @@ export default function InimigoPage() {
           </div>
         </div>
 
-        {/* ── PROBLEMS CARD ──────────────────────────────────────────────── */}
+        {/* ── PROBLEMS + SOLUTION CARD ───────────────────────────────────── */}
         <div style={card({ background: "#0f1a10", padding: "72px 56px" })}>
-          <div style={{ maxWidth: 860, margin: "0 auto" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+
+            {/* Problems */}
             <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: 14, textTransform: "uppercase" }}>
               Os três gargalos
             </span>
-            <h2 style={{ fontSize: "clamp(1.6rem, 2.4vw, 2.4rem)", fontWeight: 700, letterSpacing: "-0.03em", color: "#fff", lineHeight: 1.1, marginBottom: 48 }}>
+            <h2 style={{ fontSize: "clamp(1.6rem, 2.4vw, 2.4rem)", fontWeight: 700, letterSpacing: "-0.03em", color: "#fff", lineHeight: 1.1, marginBottom: 40 }}>
               O que está travando a sua empresa agora.
             </h2>
-            <div style={{ display: "grid", gap: 16 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 64 }}>
               {problems.map((p, i) => (
                 <div key={i} style={{
-                  display: "flex", gap: 24, alignItems: "flex-start",
+                  display: "flex", flexDirection: "column", gap: 16,
                   background: "rgba(255,255,255,0.05)",
                   border: "1px solid rgba(255,255,255,0.09)",
-                  borderRadius: 20, padding: "28px 32px",
+                  borderRadius: 20, padding: "28px 28px",
                 }}>
-                  <span style={{ fontSize: 22, color: "#18bf62", flexShrink: 0, marginTop: 2 }}>{p.icon}</span>
-                  <p style={{ fontSize: 17, fontWeight: 600, color: "rgba(255,255,255,0.88)", lineHeight: 1.45, margin: 0 }}>
+                  <span style={{ fontSize: 24, color: "#18bf62" }}>{p.icon}</span>
+                  <p style={{ fontSize: 16, fontWeight: 600, color: "rgba(255,255,255,0.88)", lineHeight: 1.5, margin: 0 }}>
                     {p.text}
                   </p>
                 </div>
               ))}
             </div>
-          </div>
-        </div>
 
-        {/* ── SOLUTION CARD ──────────────────────────────────────────────── */}
-        <div style={card({ padding: "72px 56px" })}>
-          <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
-            <div>
-              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", color: "#18bf62", display: "block", marginBottom: 16 }}>
-                A SOLUÇÃO
-              </span>
-              <h2 style={{ fontSize: "clamp(1.8rem, 2.6vw, 2.8rem)", fontWeight: 700, letterSpacing: "-0.03em", color: "#0a0a0a", lineHeight: 1.08, marginBottom: 24 }}>
-                A masIA resolve esse gargalo.
-              </h2>
-              <a href="https://ia.masinegocios.com.br/" style={btn({ marginTop: 8 })}>
-                SOLICITAR ACESSO
-              </a>
-            </div>
-            <div>
-              <p style={{ fontSize: 16, lineHeight: 1.78, color: "#444", margin: 0 }}>
-                9 especialistas que trabalham com você toda semana, analisando, identificando padrões, considerando mais fatores e devolvendo planos que você pode executar de imediato. Para que você seja mais rápido, mais preciso e cometa menos erros do que seria possível sozinho.
-              </p>
-              <div style={{ marginTop: 32, display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
-                {[["Mais rápido","nas decisões"],["Mais preciso","nas análises"],["Menos erros","nos movimentos"]].map(([v, l]) => (
-                  <div key={v} style={{ borderRadius: 14, border: "1px solid rgba(0,0,0,0.08)", background: "#fafafa", padding: "16px 14px", textAlign: "center" }}>
-                    <p style={{ fontSize: 13, fontWeight: 800, color: "#18bf62", marginBottom: 4 }}>{v}</p>
-                    <p style={{ fontSize: 11, color: "#888", margin: 0 }}>{l}</p>
-                  </div>
-                ))}
+            {/* Divider */}
+            <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", marginBottom: 64 }} />
+
+            {/* Solution */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+              <div>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.45)", display: "block", marginBottom: 16, textTransform: "uppercase" }}>
+                  A solução
+                </span>
+                <h2 style={{ fontSize: "clamp(1.8rem, 2.6vw, 2.8rem)", fontWeight: 700, letterSpacing: "-0.03em", color: "#fff", lineHeight: 1.08, marginBottom: 32 }}>
+                  A masIA resolve esse gargalo.
+                </h2>
+                <a href="https://ia.masinegocios.com.br/" style={btn()}>
+                  SOLICITAR ACESSO
+                </a>
+              </div>
+              <div>
+                <p style={{ fontSize: 16, lineHeight: 1.78, color: "rgba(255,255,255,0.7)", marginBottom: 32 }}>
+                  9 especialistas que trabalham com você toda semana, analisando, identificando padrões, considerando mais fatores e devolvendo planos que você pode executar de imediato. Para que você seja mais rápido, mais preciso e cometa menos erros do que seria possível sozinho.
+                </p>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
+                  {[["Mais rápido","nas decisões"],["Mais preciso","nas análises"],["Menos erros","nos movimentos"]].map(([v, l]) => (
+                    <div key={v} style={{ borderRadius: 14, border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.06)", padding: "16px 14px", textAlign: "center" }}>
+                      <p style={{ fontSize: 13, fontWeight: 800, color: "#18bf62", marginBottom: 4 }}>{v}</p>
+                      <p style={{ fontSize: 11, color: "rgba(255,255,255,0.45)", margin: 0 }}>{l}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
+
           </div>
         </div>
 

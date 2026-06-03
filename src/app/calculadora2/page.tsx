@@ -17,7 +17,7 @@ const specialists = [
 ];
 
 export default function Calculadora2Page() {
-  const [selected, setSelected] = useState<Set<string>>(new Set(['social']));
+  const [selected, setSelected] = useState<Set<string>>(new Set(['social', 'designer', 'copy']));
 
   const toggle = (id: string) =>
     setSelected(prev => {
@@ -34,8 +34,7 @@ export default function Calculadora2Page() {
   const hasSelection = selected.size > 0;
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#f6faf7] text-[#111827]">
-      <div className="network-bg" aria-hidden="true" />
+    <main className="relative min-h-screen overflow-hidden bg-[#ECECEC] text-[#111827]">
 
       <div className="relative mx-auto w-full max-w-6xl px-5 py-16 sm:px-8">
 
@@ -131,13 +130,13 @@ export default function Calculadora2Page() {
                 <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', marginTop: 4 }}>9 especialistas / mês</p>
               </div>
 
-              {/* Savings — mesma cor que masIA */}
-              <div style={{ padding: '32px 28px', background: 'rgba(24,191,98,0.08)' }}>
-                <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', color: '#18bf62', textTransform: 'uppercase', marginBottom: 10 }}>Economia mensal</p>
-                <p style={{ fontSize: 28, fontWeight: 800, color: '#18bf62', letterSpacing: '-0.03em', lineHeight: 1 }}>
+              {/* Savings — fundo verde claro, texto verde escuro */}
+              <div style={{ padding: '32px 28px', background: '#18bf62' }}>
+                <p style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.12em', color: '#052812', textTransform: 'uppercase', marginBottom: 10 }}>Economia mensal</p>
+                <p style={{ fontSize: 28, fontWeight: 800, color: '#052812', letterSpacing: '-0.03em', lineHeight: 1 }}>
                   R$ {savings.toLocaleString('pt-BR')}
                 </p>
-                <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', marginTop: 4 }}>
+                <p style={{ fontSize: 13, fontWeight: 800, color: '#052812', marginTop: 4 }}>
                   {savings > 0 ? `${Math.round((savings / totalMarket) * 100)}% de economia` : 'por mês'}
                 </p>
               </div>
@@ -149,7 +148,7 @@ export default function Calculadora2Page() {
         <div className="mt-5 rounded-[20px] border border-emerald-950/10 bg-[#f0faf4] px-6 py-5">
           <p className="text-sm font-semibold leading-6 text-slate-700">
             <span className="mr-2 font-bold text-emerald-700">Com a masIA,</span>
-            você tem 9 especialistas trabalhando com você toda semana, por R$ 3.000/mês. Menos do que o custo de um único profissional especializado.
+            você tem 9 especialistas trabalhando com você toda semana, por R$ 3.000/mês. Menos do que o custo de um único profissional.
           </p>
         </div>
 

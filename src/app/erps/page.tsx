@@ -211,18 +211,8 @@ export default function ErpsPage() {
       perspective: '1200px',
       perspectiveOrigin: '50% 50%',
     }}>
-      <div style={{
-        position: 'absolute', width: 520, height: 520, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(200,210,255,0.28) 0%, transparent 70%)',
-        filter: 'blur(60px)', pointerEvents: 'none', left: '30%', top: '20%',
-      }} />
-      <div style={{
-        position: 'absolute', width: 400, height: 400, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(255,200,220,0.18) 0%, transparent 70%)',
-        filter: 'blur(50px)', pointerEvents: 'none', right: '25%', bottom: '20%',
-      }} />
 
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 44 }}>
+      <div className="erps-group" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 44 }}>
         <div style={{ display: 'flex', gap: 37, alignItems: 'center' }}>
           <GlassCard label="ERPs"  floatPhase={0}   baseRotY={10} />
           <GlassCard label="CRMs"  floatPhase={1.8} baseRotY={-10} />

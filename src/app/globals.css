@@ -795,6 +795,13 @@ html {
   }
 }
 
+@media (max-width: 768px) {
+  .erps-group {
+    transform: scale(0.8);
+    transform-origin: center center;
+  }
+}
+
 @media (max-width: 720px) {
   .radar-3d-wrap {
     width: min(59vw, 302px);

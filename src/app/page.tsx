@@ -69,14 +69,6 @@ const automations = [
   "Atualização mensal da SWOT",
 ];
 
-const contentFeatures = [
-  "Escreve o texto e a copy de cada post",
-  "Cria o carrossel com design no padrão da sua marca",
-  "Gera a arte para feed, stories e anúncios",
-  "Publica de forma integrada nas suas redes sociais",
-  "Analisa performance e sugere a próxima pauta",
-];
-
 const faq = [
   {
     question: "A MASI IA é um curso de inteligência artificial?",
@@ -444,53 +436,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative mx-auto w-full max-w-7xl px-5 py-24 sm:px-8" id="ia-conteudo">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-          <div>
-            <p className="section-kicker">// do briefing ao feed — sem você precisar fazer nada</p>
-            <h2 className="section-title">
-              Você imaginou ter um post pronto, com copy, arte e legenda, publicado no seu feed sem você precisar abrir uma única ferramenta?
-            </h2>
-            <p className="mt-5 text-lg font-semibold leading-snug text-slate-800">
-              Na masIA, isso já é o dia a dia de centenas de empresários.
-            </p>
-            <p className="section-copy">
-              A IA de conteúdo da masIA escreve seu conteúdo no estilo da sua marca e ainda publica direto nas suas redes sociais de forma integrada, sem precisar exportar, sem precisar aprovar cada peça, sem depender de ninguém.
-            </p>
-            <p className="mt-5 text-sm font-semibold text-slate-700">
-              Você define a estratégia. Ela executa.
-            </p>
-            <a
-              className="mt-8 inline-flex h-11 items-center justify-center rounded-full border border-slate-900/10 bg-white/70 px-6 text-sm font-semibold text-slate-800 shadow-sm transition hover:bg-white"
-              href="#acesso"
-            >
-              Ver exemplo de post gerado →
-            </a>
-          </div>
-
-          <div>
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-emerald-700">
-              O que ela faz por você
-            </p>
-            <div className="grid gap-3">
-              {contentFeatures.map((item) => (
-                <div
-                  className="flex items-start gap-3 rounded-xl border border-emerald-950/10 bg-white/72 px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm"
-                  key={item}
-                >
-                  <span className="mt-1 size-2 shrink-0 rounded-full bg-[#18bf62]" />
-                  {item}
-                </div>
-              ))}
-            </div>
-            <p className="mt-5 rounded-2xl border border-emerald-950/10 bg-[#f0faf4] px-5 py-4 text-sm leading-6 text-slate-600">
-              Enquanto você fecha uma venda, a sua presença digital já está sendo construída.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="relative mx-auto w-full max-w-7xl px-5 py-24 sm:px-8">
+<section className="relative mx-auto w-full max-w-7xl px-5 py-24 sm:px-8">
         <div className="grid gap-5 lg:grid-cols-2">
           <article className="rounded-[24px] border border-emerald-950/10 bg-white/72 p-8 shadow-sm">
             <p className="section-kicker">Para quem é</p>

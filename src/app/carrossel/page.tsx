@@ -56,7 +56,7 @@ export default function CarrosselPage() {
   };
 
   return (
-    <main style={{ width: '100vw', height: '100vh', background: '#ECECEC', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+    <main className="carrossel-main" style={{ width: '100vw', height: '100vh', background: '#ECECEC', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
       <style>{`@keyframes bounce { 0%,100%{transform:translateY(0);opacity:1} 50%{transform:translateY(-6px);opacity:0.6} }`}</style>
       <div className="mx-auto max-w-[340px] w-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-900/12">
         {/* Header */}

@@ -25,10 +25,10 @@ export default function MasterclassPage() {
       <div className="mx-auto w-full max-w-5xl px-5 py-16 sm:px-8">
 
         {/* Two-column layout */}
-        <div className="grid gap-4 lg:grid-cols-2">
+        <div className="grid gap-6 lg:grid-cols-2">
 
           {/* Dores */}
-          <div style={{ background: '#0f2415', borderRadius: 24, overflow: 'hidden' }}>
+          <div style={{ background: '#0f2415', borderRadius: 10, overflow: 'hidden' }}>
             <div style={{
               padding: '28px 28px 18px',
               background: 'rgba(24,191,98,0.08)',
@@ -52,7 +52,7 @@ export default function MasterclassPage() {
                   gap: 12,
                   alignItems: 'flex-start',
                   background: 'rgba(255,255,255,0.04)',
-                  borderRadius: 14,
+                  borderRadius: 10,
                   padding: '13px 15px',
                   border: '1px solid rgba(255,255,255,0.06)',
                 }}>
@@ -90,7 +90,7 @@ export default function MasterclassPage() {
           {/* Transformação */}
           <div style={{
             background: '#fff',
-            borderRadius: 24,
+            borderRadius: 10,
             overflow: 'hidden',
             border: '1px solid rgba(0,0,0,0.07)',
           }}>
@@ -118,7 +118,7 @@ export default function MasterclassPage() {
                   gap: 12,
                   alignItems: 'flex-start',
                   background: 'rgba(24,191,98,0.05)',
-                  borderRadius: 14,
+                  borderRadius: 10,
                   padding: '13px 15px',
                   border: '1px solid rgba(24,191,98,0.12)',
                 }}>

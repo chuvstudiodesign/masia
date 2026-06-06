@@ -105,7 +105,6 @@ export default function MasterclassPage() {
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase',
                 color: '#18bf62',
-                fontWeight: 700,
                 WebkitTextStroke: '0.4px #18bf62',
               }}>
                 O que você vai ter depois

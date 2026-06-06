@@ -14,7 +14,7 @@ const dores = [
 const transformacoes = [
   'Como montar um planejamento com SWOT, OKRs e metas monitoradas semana a semana no trimestre',
   'Como deixar a intuição de lado e tomar decisões com base em dados, números e análises reais',
-  'Como ter análise financeira, inteligência de mercado e marketing estratégico sem contratar mais',
+  'Como ter análise financeira, inteligência de mercado e marketing sem contratar mais',
   'Como sair do operacional e atuar no estratégico enquanto toda a estrutura trabalha por você',
   'Como ter visibilidade em tempo real de cada meta e tarefa sem precisar perguntar a ninguém',
 ];
@@ -28,11 +28,11 @@ export default function MasterclassPage() {
         <div className="grid gap-6 lg:grid-cols-2">
 
           {/* Dores */}
-          <div style={{ background: '#0f2415', borderRadius: 10, overflow: 'hidden' }}>
+          <div style={{ background: 'linear-gradient(135deg, #308B52, #42BE70)', borderRadius: 10, overflow: 'hidden' }}>
             <div style={{
               padding: '28px 28px 18px',
-              background: 'rgba(24,191,98,0.08)',
-              borderBottom: '1px solid rgba(24,191,98,0.18)',
+              background: 'rgba(0,0,0,0.12)',
+              borderBottom: '1px solid rgba(255,255,255,0.12)',
             }}>
               <span className={spaceGrotesk.className} style={{
                 fontSize: 15,
@@ -40,6 +40,7 @@ export default function MasterclassPage() {
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase',
                 color: '#fff',
+                WebkitTextStroke: '0.4px #fff',
               }}>
                 O que você vive hoje
               </span>
@@ -51,32 +52,32 @@ export default function MasterclassPage() {
                   display: 'flex',
                   gap: 12,
                   alignItems: 'flex-start',
-                  background: 'rgba(255,255,255,0.04)',
+                  background: 'rgba(255,255,255,0.10)',
                   borderRadius: 10,
                   padding: '13px 15px',
-                  border: '1px solid rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.11)',
                 }}>
                   <div style={{
                     flexShrink: 0,
                     width: 22,
                     height: 22,
                     borderRadius: '50%',
-                    background: 'rgba(251,146,60,0.14)',
-                    border: '1.5px solid rgba(251,146,60,0.28)',
+                    background: 'rgba(253,186,116,0.55)',
+                    border: '1.5px solid rgba(253,186,116,0.8)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     marginTop: 1,
                   }}>
                     <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
-                      <path d="M5 2.5v3" stroke="#fb923c" strokeWidth="1.8" strokeLinecap="round"/>
-                      <circle cx="5" cy="7.5" r="0.9" fill="#fb923c"/>
+                      <path d="M5 2.5v3" stroke="#fff" strokeWidth="1.8" strokeLinecap="round"/>
+                      <circle cx="5" cy="7.5" r="0.9" fill="#fff"/>
                     </svg>
                   </div>
                   <p className={inter.className} style={{
                     fontSize: 15,
                     lineHeight: 1.55,
-                    color: 'rgba(255,255,255,0.72)',
+                    color: '#fff',
                     margin: 0,
                     fontWeight: 400,
                   }}>

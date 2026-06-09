@@ -22,17 +22,17 @@ const transformacoes = [
 export default function MasterclassPage() {
   return (
     <main className="min-h-screen bg-[#ECECEC] text-[#111827]">
-      <div className="mx-auto w-full max-w-5xl px-5 py-16 sm:px-8">
+      <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8">
 
         {/* Two-column layout */}
         <div className="grid gap-6 lg:grid-cols-2">
 
           {/* Dores */}
-          <div style={{ background: 'linear-gradient(135deg, #308B52, #42BE70)', borderRadius: 10, overflow: 'hidden' }}>
+          <div style={{ background: '#0d1a10', borderRadius: 10, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.07)' }}>
             <div style={{
-              padding: '28px 28px 18px',
-              background: 'rgba(0,0,0,0.12)',
-              borderBottom: '1px solid rgba(255,255,255,0.12)',
+              padding: '28px 30px 18px',
+              background: 'rgba(255,255,255,0.04)',
+              borderBottom: '1px solid rgba(255,255,255,0.08)',
             }}>
               <span className={spaceGrotesk.className} style={{
                 fontSize: 15,
@@ -46,32 +46,31 @@ export default function MasterclassPage() {
               </span>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 3, padding: '14px 14px 20px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 5, padding: '30px 30px 30px' }}>
               {dores.map((item, i) => (
                 <div key={i} style={{
                   display: 'flex',
                   gap: 12,
                   alignItems: 'flex-start',
-                  background: 'rgba(255,255,255,0.10)',
+                  background: 'rgba(255,255,255,0.05)',
                   borderRadius: 10,
                   padding: '13px 15px',
-                  border: '1px solid rgba(255,255,255,0.11)',
+                  border: '1px solid rgba(255,255,255,0.07)',
                 }}>
                   <div style={{
                     flexShrink: 0,
                     width: 22,
                     height: 22,
                     borderRadius: '50%',
-                    background: 'rgba(253,186,116,0.55)',
-                    border: '1.5px solid rgba(253,186,116,0.8)',
+                    background: '#EA580C',
+                    border: '1.5px solid #F97316',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     marginTop: 1,
                   }}>
-                    <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
-                      <path d="M5 2.5v3" stroke="#fff" strokeWidth="1.8" strokeLinecap="round"/>
-                      <circle cx="5" cy="7.5" r="0.9" fill="#fff"/>
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                      <path d="M2 2l6 6M8 2l-6 6" stroke="#fff" strokeWidth="2" strokeLinecap="round"/>
                     </svg>
                   </div>
                   <p className={inter.className} style={{
@@ -90,45 +89,45 @@ export default function MasterclassPage() {
 
           {/* Transformação */}
           <div style={{
-            background: '#fff',
+            background: 'linear-gradient(135deg, #144229, #1e5e3b)',
             borderRadius: 10,
             overflow: 'hidden',
-            border: '1px solid rgba(0,0,0,0.07)',
           }}>
             <div style={{
-              padding: '28px 28px 18px',
-              background: 'rgba(24,191,98,0.06)',
-              borderBottom: '1px solid rgba(24,191,98,0.14)',
+              padding: '28px 30px 18px',
+              background: 'rgba(0,0,0,0.18)',
+              borderBottom: '1px solid rgba(255,255,255,0.10)',
             }}>
               <span className={spaceGrotesk.className} style={{
                 fontSize: 15,
                 fontWeight: 700,
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase',
-                color: '#18bf62',
-                WebkitTextStroke: '0.4px #18bf62',
+                color: '#fff',
+                WebkitTextStroke: '0.4px #fff',
               }}>
                 O que você vai ter depois
               </span>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 3, padding: '14px 14px 20px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 5, padding: '30px 30px 30px' }}>
               {transformacoes.map((item, i) => (
                 <div key={i} style={{
                   display: 'flex',
                   gap: 12,
                   alignItems: 'flex-start',
-                  background: 'rgba(24,191,98,0.05)',
+                  background: 'rgba(255,255,255,0.10)',
                   borderRadius: 10,
                   padding: '13px 15px',
-                  border: '1px solid rgba(24,191,98,0.12)',
+                  border: '1px solid rgba(255,255,255,0.11)',
                 }}>
                   <div style={{
                     flexShrink: 0,
                     width: 22,
                     height: 22,
                     borderRadius: '50%',
-                    background: '#18bf62',
+                    background: '#196e38',
+                    border: '1.5px solid #2e9e56',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -141,7 +140,7 @@ export default function MasterclassPage() {
                   <p className={inter.className} style={{
                     fontSize: 15,
                     lineHeight: 1.55,
-                    color: '#374151',
+                    color: '#fff',
                     margin: 0,
                     fontWeight: 400,
                   }}>
